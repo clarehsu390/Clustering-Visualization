@@ -42,26 +42,25 @@ To allow this project to be productive as well as a successful learning experien
 - Setup the PostgreSQL database/seed database and help with clustering algorithm (Clare)
 
 **Day 2**: Work on Django backend and 2D clustering visualization
-- Setting up the backbone of Django and writing necessary methods
-- Begin using D3 to create 2D visualization
-- Start working on the narrative/description of our webpage - outline
-- Setup basic webpage design
+- Setting up the backbone of Django and writing necessary methods (Hui)
+- Begin using D3 to create 2D visualization (Wen)
+- Start working on the narrative/description of our webpage - outline (Clare)
+- Setup basic webpage design (all)
 
 **Day 3**: Continue working on 2D visualization and begin 3D visualization
-- Finish 2D visualization if incomplete from day 2
-- Begin 3D clustering display using D3
-- Should be able to show the final result of the clustering algorithm in our visualizations
-- Continue working narrative/description - hopefully finish that by the end of the day
+- Finish 2D visualization if incomplete from day 2 (Clare)
+- Begin 3D clustering display using D3 (Hui)
+- Should be able to show the final result of the clustering algorithm in our visualizations (all)
+- Continue working narrative/description - hopefully finish that by the end of the day (Wen)
 
 **Day 4**: Dedicate to designing/finalizing the webpage
-- The narrative will match up with different points of the clustering algorithm
+- The narrative will match up with different points of the clustering algorithm (all)
 - Continue 3D clustering visualization and include on webpage
 
 **Day 5**: Final touchups/Production README
-- Work on production README.md and push to Github
-- Setup Github Pages to have live link
-- Implement edits as needed for final webpage
+- Work on production README.md and push to Github (all)
+- Setup Github Pages to have live link (Clare)
+- Implement edits as needed for final webpage (all)
 
 ### Bonus features:
 - Compare and contrast time complexity with other clustering algorithms
-- 
