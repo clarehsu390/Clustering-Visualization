@@ -2,6 +2,12 @@
 
 ### Background
 
+Machine learning has become particularly popular in the recent years. Computers are able to perform complex tasks without human interference. We wanted to introduce the basics of machine learning.
+
+For our project, we have decided to build data visualizations of a machine learning algorithm called K-means clustering. We want to provide an intuitive visual for this popular algorithm. The goal of this algorithm is to find groups in the data, with k number of groups. This algorithm works iteratively to assign data points to a group based on similarities. K-means clustering is an example of unsupervised learning, where data has not been explicitly labeled.
+
+Clustering is often used in the industry to study user purchase behavior or group images and videos.
+
 ### Functionality & MVP
 - [ ] Display D3 visualization of k-means clustering algorithm in 2D and 3D diagrams
 - [ ] Users can scroll through page to view different points in the algorithm
@@ -30,6 +36,7 @@ The data visualization will be created on our own k-means clustering algorithm, 
 1. Prepared the sample data set to learn how to use D3
 - Followed online tutorials to help guide us through the process
 2. Used D3 to visualized our sample data set in 2D
+![d3 visualization](scatterplot.gif)
 3. Learned basic Python and Django to prepare for the week's work
 4. Setup our flex project repo on Github
 
