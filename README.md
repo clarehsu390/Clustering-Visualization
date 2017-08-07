@@ -33,7 +33,8 @@ The primary technical challenges will be:
 The data visualization will be created on our own k-means clustering algorithm, in 2 dimensions and 3 dimensions. We will be displaying intermediate steps in the algorithm to show the process. Our final goal is to have our algorithm group all the data points into clusters based on similar attributes.
 
 ### Things We Accomplished Over the Weekend
-1. Prepared the sample data set to learn how to use D3
+1. Prepared the sample data set by using python and Jupyter Notebook to learn how to use D3
+[Python](scatter point.png)
 - Followed online tutorials to help guide us through the process
 2. Used D3 to visualized our sample data set in 2D
 ![d3 visualization](scatterplot.gif)
