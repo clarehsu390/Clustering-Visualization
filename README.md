@@ -16,7 +16,7 @@ Clustering is often used in the industry to study user purchase behavior or grou
 
 ### Wireframes
 
-![wireframes](wireframes/cluster.png)
+![wireframes](wireframes/Cluster.png)
 
 ### Technologies & Technical Challenges
 
