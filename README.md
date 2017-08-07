@@ -38,7 +38,7 @@ The data visualization will be created on our own k-means clustering algorithm, 
 2. Used D3 to visualized our sample data set in 2D
 ![d3 visualization](scatterplot.gif)
 3. Learned basic Python and Django to prepare for the week's work
-[Resources]: (https://docs.google.com/document/d/1Qs32dAd-ItVgU6k9laTzrlrHUBuL6g7luZtPh_a3kQE/edit?usp=sharing)
+[Resources] (https://docs.google.com/document/d/1Qs32dAd-ItVgU6k9laTzrlrHUBuL6g7luZtPh_a3kQE/edit?usp=sharing)
 4. Setup our flex project repo on Github
 
 ### Implementation Timeline
