@@ -34,7 +34,7 @@ The data visualization will be created on our own k-means clustering algorithm, 
 
 ### Things We Accomplished Over the Weekend
 1. Prepared the sample data set by using python and Jupyter Notebook to learn how to use D3
-[Python](scatter point.png)
+![Python](scatter_point.png)
 - Followed online tutorials to help guide us through the process
 2. Used D3 to visualized our sample data set in 2D
 ![d3 visualization](scatterplot.gif)
