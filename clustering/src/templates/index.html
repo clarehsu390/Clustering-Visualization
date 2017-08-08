@@ -17,37 +17,6 @@
 
             .setPin("#title")
             .addTo(controller);
-
-            $(function (){
-                let controller = new ScrollMagic.Controller();
-                globalSceneOptions: {
-                    triggerHook: 'onLeave'
-                }
-            });
-
-            let slides = document.querySelectorAll("section.panel");
-
-            for (let i=0; i<slides.length; i++){
-                new ScrollMagic.Scene({
-                    triggerElement: slides[i]
-                })
-                .setPin(slides[i])
-                .addIndicators()
-                .addTo(controller);
-            }
         </script>
-     
-        <section class="panel blue">
-        <b>ONE</b>
-        </section>
-        <section class="panel turqoise">
-            <b>TWO</b>
-        </section>
-        <section class="panel green">
-            <b>THREE</b>
-        </section>
-        <section class="panel bordeaux">
-            <b>FOUR</b>
-        </section>
     </body>
 </html>

@@ -5,8 +5,25 @@ h1 {
 .panel {
     height: 100%;
     width: 100%;
+    text-align: center;
+    color: white;
+    background-color: black;
+
+
 }
 
 .panel.green {
-    margin-bottom: 400px
+    background-color: green;
+}
+
+.panel.turqoise {
+    background-color: turquoise;
+}
+
+.panel.bordeaux {
+    background-color: red;
+}
+
+.panel.blue {
+    background-color: blue;
 }
