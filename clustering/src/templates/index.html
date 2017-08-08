@@ -1,11 +1,53 @@
 <html>
     <head>
-        <h1>Clustering Visualization</h1>
+       
         <link rel="stylesheet" type="text/css" href="../media/main.css"/>
-
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
     </head>
 
     <body>
-        
+         <h1 id="title">A Visualization of K-means Clustering in Machine Learning</h1>
+         <script>
+             let controller = new ScrollMagic.Controller();
+
+            new ScrollMagic.Scene({
+                duration: 300,
+                offset: 0
+            })
+
+            .setPin("#title")
+            .addTo(controller);
+
+            $(function (){
+                let controller = new ScrollMagic.Controller();
+                globalSceneOptions: {
+                    triggerHook: 'onLeave'
+                }
+            });
+
+            let slides = document.querySelectorAll("section.panel");
+
+            for (let i=0; i<slides.length; i++){
+                new ScrollMagic.Scene({
+                    triggerElement: slides[i]
+                })
+                .setPin(slides[i])
+                .addIndicators()
+                .addTo(controller);
+            }
+        </script>
+     
+        <section class="panel blue">
+        <b>ONE</b>
+        </section>
+        <section class="panel turqoise">
+            <b>TWO</b>
+        </section>
+        <section class="panel green">
+            <b>THREE</b>
+        </section>
+        <section class="panel bordeaux">
+            <b>FOUR</b>
+        </section>
     </body>
 </html>
