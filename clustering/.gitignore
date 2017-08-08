@@ -2,3 +2,4 @@
 staticfiles
 .env
 venv
+.vscode
