@@ -33,6 +33,7 @@ DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
+    'iris',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
