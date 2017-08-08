@@ -3,3 +3,5 @@ staticfiles
 .env
 venv
 .vscode
+.DS_Store
+../.DS_Store
