@@ -1,0 +1,22 @@
+<html>
+    <head>
+       
+        <link rel="stylesheet" type="text/css" href="../media/main.css"/>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
+    </head>
+
+    <body>
+         <h1 id="title">A Visualization of K-means Clustering in Machine Learning</h1>
+         <script>
+             let controller = new ScrollMagic.Controller();
+
+            new ScrollMagic.Scene({
+                duration: 300,
+                offset: 0
+            })
+
+            .setPin("#title")
+            .addTo(controller);
+        </script>
+    </body>
+</html>
