@@ -1,16 +1,36 @@
-.main {
-     display: flex;
+html {
+    background: #EDEAE5
+}
+
+h1 {
+    text-align: center;
+    width: 50%;
+    color: white;
+    border: solid 3px white;
+    margin: auto;
+    height: 100%;
+}
+div {
+    display: flex;
     flex-direction: row; 
+    margin-bottom: 100;
+    margin-top: 100;
+    justify-content: center;
 }
 
-.left p {
-    column-count: 1;
+.intuition {
+    margin-bottom: 30px;
 }
 
-div.bar {
-    display: inline-block;
-    width: 20px;
-    height: 75px;
-    background-color: teal;
-    margin-right: 2px;
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif
 }
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
