@@ -1,1 +1,1 @@
-web: gunicorn master.wsgi --log-file
+web: gunicorn web:app --log-file=-
