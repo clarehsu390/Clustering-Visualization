@@ -1,11 +1,4 @@
-.main {
-     display: flex;
-    flex-direction: row; 
-}
 
-.left p {
-    column-count: 1;
-}
 
 div.bar {
     display: inline-block;
@@ -13,4 +6,20 @@ div.bar {
     height: 75px;
     background-color: teal;
     margin-right: 2px;
+}
+
+div {
+    display: flex;
+    flex-direction: row; 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
 }
