@@ -1,5 +1,11 @@
+/* $darkteal: #026670;
+$teal:#9FEDD7;
+$pale: #FEDF9C;
+$yellow: #FCE181;
+$gray: #EDEAE5;  */
+
 html {
-    background: #EDEAE5
+    background: #EDEAE5;
 }
 
 h1 {
@@ -7,9 +13,14 @@ h1 {
     width: 50%;
     color: white;
     border: solid 3px white;
+    font-size: 100px;
     margin: auto;
-    height: 100%;
+     text-shadow: .03em .03em 0 gray;
+     font-family: 'Quicksand', sans-serif;
 }
+
+
+
 div {
     display: flex;
     flex-direction: row; 
@@ -32,5 +43,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 500px;
 }
 
