@@ -1,9 +1,16 @@
 .main {
-    display: flex;
-    flex-direction: row;
+     display: flex;
+    flex-direction: row; 
 }
 
-.left {
+.left p {
     column-count: 1;
+}
 
+div.bar {
+    display: inline-block;
+    width: 20px;
+    height: 75px;
+    background-color: teal;
+    margin-right: 2px;
 }
