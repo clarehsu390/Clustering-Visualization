@@ -8,6 +8,9 @@ from django.shortcuts import render
 import math
 import random
 
+def index(request):
+    return render(request, 'iris/index.html', {})
+
 def main():  
     num_points = 20
     dimensions = 2
