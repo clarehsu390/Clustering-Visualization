@@ -1,16 +1,25 @@
-
-
-div.bar {
-    display: inline-block;
-    width: 20px;
-    height: 75px;
-    background-color: teal;
-    margin-right: 2px;
+html {
+    background: #EDEAE5
 }
 
+h1 {
+    text-align: center;
+    width: 50%;
+    color: white;
+    border: solid 3px white;
+    margin: auto;
+    height: 100%;
+}
 div {
     display: flex;
     flex-direction: row; 
+    margin-bottom: 100;
+    margin-top: 100;
+    justify-content: center;
+}
+
+.intuition {
+    margin-bottom: 30px;
 }
 
 body {
@@ -22,4 +31,6 @@ body {
 .text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
+
