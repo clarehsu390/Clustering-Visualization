@@ -1,1 +1,1 @@
-web: gunicorn web:app --log-file=-
+web: gunicorn clustering.wsgi --log-file -
