@@ -10,16 +10,17 @@ html {
 
 h1 {
     text-align: center;
-    width: 50%;
+    width: 80%;
     color: white;
-    border: solid 3px white;
     font-size: 100px;
+    height: 100%;
     margin: auto;
      text-shadow: .03em .03em 0 gray;
      font-family: 'Quicksand', sans-serif;
+     padding: 5px;
+     margin-top: 100px;
+     background-size: cover
 }
-
-
 
 div {
     display: flex;

@@ -12,7 +12,11 @@
         <script>
             let controller = new ScrollMagic.Controller();
             // $(function() {
-                let scene = new ScrollMagic.Scene({triggerElement: "h1", duration: 100})
+                let scene = new ScrollMagic.Scene( globalSceneOptions: {
+                        triggerHook: 'onLeave';
+                        triggerElemnt: "h1";
+                        duration: 100;
+                    })
                 .setPin("h1")
                 .addTo(controller);
             // });
@@ -77,7 +81,7 @@
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
                         triggerElement: slides[i],
-                        duration: 500
+                        duration: 400
                     })
                     .setPin(slides[i])
                     .addTo(control);
