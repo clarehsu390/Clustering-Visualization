@@ -7,10 +7,11 @@ from .models import Iris
 
 # Create your views here.
 
-def index(request): 
-    iris_list = Iris.objects
+def index(request):
+    iris_list = Iris.objects.all().values()
     context = {'iris_list': iris_list}
     return render(request,'iris/index.html', context)
+	# return render(request, 'iris/index.html', {})
 
 # import math
 # import random
