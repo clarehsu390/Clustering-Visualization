@@ -6,6 +6,13 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
     </head>
     <body>
+    
+        {% if iris_list%}
+            <li>
+                {iris_list[0]}
+            </li>
+        {% endif%}
+
         <script>
             let controller = new ScrollMagic.Controller();
             // $(function() {
