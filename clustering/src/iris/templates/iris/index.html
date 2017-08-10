@@ -11,7 +11,6 @@
          <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet"> 
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-         <script> var iris_list = "{{ iris_list }}";</script> 
 
          <script src="../../static/kmeans.js"></script> 
         
@@ -64,9 +63,9 @@
             <div class="title 2d">
                   <p>
                       <div id="kmeans"></div>
-    <script type="text/javascript">
-        var iris_list = "{{ iris_list }}"
-                      kMeans("#kmeans", 500, 500, 1000, 3, 10);</script> 
+             <script type="text/javascript">
+                var iris_list = {{ iris_list|safe }}
+                    kMeans("#kmeans", 500, 500, 1000, 3, 10);</script> 
                 </p>
 
                 <div id="text">

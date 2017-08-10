@@ -225,7 +225,7 @@
 
 function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
     // the current iteration
-    console.log(typeof iris_list);
+   console.log(iris_list);
     var iter = 1,
         centroids = [],
         points = [];
@@ -234,7 +234,7 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
         width = w - margin.left - margin.right,
         height = h - margin.top - margin.bottom;
 
-     var colors = d3.schemeCategory10;
+     var colors = ['#FCE181','#EDEAE5', '#9FEDD7' ];
     
     var svg = d3.select(elt).append("svg")
         .style("width", width + margin.left + margin.right)

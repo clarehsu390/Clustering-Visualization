@@ -63,3 +63,7 @@ img {
     padding: 30px;
 }
 
+.centroid {
+        stroke: #000;
+    stroke-width: 2px;
+}
