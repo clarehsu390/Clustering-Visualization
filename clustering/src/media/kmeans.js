@@ -1,4 +1,3 @@
-"use strict";
 
 function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
 
@@ -40,26 +39,36 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
      * Returns a point with the specified type and fill color and with random 
      * x,y-coordinates.
      */
-    function getRandomPoint(type, fill) {
-        return { 
-            x: Math.round(Math.random() * width), 
-            y: Math.round(Math.random() * height),
-            type: type,
-            fill: fill 
-        };
-    }
+    // function getRandomPoint(type, fill) {
+    //     for(let i=0; i < iris_list.length; i++) {
+    //         iris_list
+    //     }
+        
+    //     return { 
+    //         x: Math.round(Math.random() * width), 
+    //         y: Math.round(Math.random() * height),
+    //         type: type,
+    //         fill: fill 
+    //     };
+    // }
 
     /** 
      * Generates a specified number of random points of the specified type.
      */
-    function initializePoints(num, type) {
+    function initializePoints(type, fill) {
+        
         var result = [];
-        for (var i = 0; i < num; i++) {
+        for (var i = 0; i < iris_list.length; i++) {
             var color = colors[i];
             if (type !== "centroid") {
                 color = "#ccc";
             }
-            var point = getRandomPoint(type, color);
+            var point = {
+                x: iris_list[i].petal_length,
+                y: iris_list[i].petal_width,
+                type: type,
+                fill: fill
+            }
             point.id = point.type + "-" + i;
             result.push(point);
         }
