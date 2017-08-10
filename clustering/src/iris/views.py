@@ -9,7 +9,7 @@ from .models import Iris
 
 def index(request):
     iris_list = []
-    for e in Iris.objects.all().values():
+    for e in Iris.objects.all():
         iris_list.append(e)
     context = {'iris_list': iris_list}
     return render(request,'iris/index.html', context)

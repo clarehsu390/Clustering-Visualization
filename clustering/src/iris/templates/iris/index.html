@@ -8,18 +8,18 @@
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet"> 
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
          <script> var iris_list = "{{ iris_list }}";</script> 
 
-        <script src="../../static/kmeans.js"></script>
+         <script src="../../static/kmeans.js"></script> 
         
     </head>
     <body>
        
         
-       
+<!--        
         <script>
             let controller = new ScrollMagic.Controller();
             // $(function() {
@@ -31,7 +31,7 @@
                 .setPin("h1")
                 .addTo(controller);
             // });
-        </script>
+        </script> -->
             <div class="title intuition">
 
                  <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
@@ -64,7 +64,9 @@
             <div class="title 2d">
                   <p>
                       <div id="kmeans"></div>
-                      <script type="text/javascript">kMeans("#kmeans", 500, 500, 150, 3, 10);</script>
+    <script type="text/javascript">
+        var iris_list = "{{ iris_list }}"
+                      kMeans("#kmeans", 500, 500, 1000, 3, 10);</script> 
                 </p>
 
                 <div id="text">
