@@ -1,10 +1,13 @@
 <html>
     <head>
-        <h1 class="animated fadeInUp">Visualization of K-means Clustering in Machine Learning</h1>
+        <div class="header">
+        <h1 class="animated fadeInUp">Introduction to Machine Learning: K-means Clustering</h1>
+        </div>
         <link rel="stylesheet" type="text/css" href="../../static/main.css"/>
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     </head>
@@ -13,9 +16,8 @@
             let controller = new ScrollMagic.Controller();
             // $(function() {
                 let scene = new ScrollMagic.Scene( globalSceneOptions: {
-                        triggerHook: 'onLeave';
-                        triggerElemnt: "h1";
-                        duration: 100;
+                        triggerHook: 'onLeave',
+                        triggerElement: "h1"
                     })
                 .setPin("h1")
                 .addTo(controller);
@@ -24,18 +26,18 @@
             <div class="title intuition">
 
                  <p>
-                    <svg width="500" height="50">
-                    <circle cx="250" cy="25" r="25"/>
+                    <svg width="500" height="100">
+                    <rect x="0" y="0" height="200" width="50" fill="#FEDF9C"/>
                     </svg>
                 </p>
-                <div class="text">
+                <div id="text">
             <h2>Some Intuition</h2>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
 
             </div>
             <div class="title intro">
-                <div class="text">
+                <div id="text" class="animated fadeInUp">
                 <h2>Introduction to Data Set</h2>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
@@ -48,7 +50,7 @@
             </div>
 
             <div class="title clustering">
-                <div class="text">
+                <div id="text">
                      <h2>K-means Clustering</h2>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
@@ -61,7 +63,7 @@
                     </svg>
                 </p>
 
-                <div class="text">
+                <div id="text">
                     <h2>2D Visualization</h2>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
@@ -81,7 +83,7 @@
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
                         triggerElement: slides[i],
-                        duration: 400
+                        duration: 500
                     })
                     .setPin(slides[i])
                     .addTo(control);
