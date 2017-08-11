@@ -99,8 +99,8 @@
                     var x3d = d3.select("#chartholder")
                         .attr("width", width + 'px')
                         .attr("height", height +'px')
-                        .attr("showLog", 'true')
-                        .attr("showStat", 'true');
+                        .attr("showLog", 'false')
+                        .attr("showStat", 'false');
 
                     d3.select('.x3dom-canvas')
                         .attr("width", 2 * width)
@@ -146,26 +146,26 @@
                         .call(zAxis)
                         .select('.domain');
 
-                    var n = 40;
-                    var points = d3.range(n).map(function(d) {
-                        var p = {};
-                        p.x = Math.random();
-                        p.z = Math.random();
-                        p.y = Math.random();
-                        return p;
-                    });
+                //     var n = 40;
+                //     var points = d3.range(n).map(function(d) {
+                //         var p = {};
+                //         p.x = Math.random();
+                //         p.z = Math.random();
+                //         p.y = Math.random();
+                //         return p;
+                //     });
                 
-                    scene.selectAll('.point')
-                        .data(points)
-                        .enter()
-                        .append('transform')
-                        .attr('class', 'point')
-                        .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
-                        .append('shape')
-                        .call(makeSolid, 'orange')
-                        .append('sphere')
-                        .attr('radius', 0.8);
-                </script> 
+                //     scene.selectAll('.point')
+                //         .data(points)
+                //         .enter()
+                //         .append('transform')
+                //         .attr('class', 'point')
+                //         .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
+                //         .append('shape')
+                //         .call(makeSolid, 'orange')
+                //         .append('sphere')
+                //         .attr('radius', 0.8);
+                // </script> 
             </div>
             <script>
 
