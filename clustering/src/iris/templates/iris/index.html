@@ -1,9 +1,9 @@
 {% load staticfiles %}
 <html>
     <head>
-        <div class="header">
+
         <h1 class="animated fadeInUp">Introduction to Machine Learning: K-means Clustering</h1>
-        </div>
+   
         <link rel="stylesheet" type="text/css" href="../../static/main.css"/>
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
@@ -18,7 +18,7 @@
     <body>
        
         
-<!--        
+        
         <script>
             let controller = new ScrollMagic.Controller();
             // $(function() {
@@ -30,7 +30,7 @@
                 .setPin("h1")
                 .addTo(controller);
             // });
-        </script> -->
+        </script> 
             <div class="title intuition">
 
                  <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
@@ -61,12 +61,12 @@
 
             </div>
             <div class="title 2d">
-                  <p>
-                      <div id="kmeans"></div>
+                
+            <div id="kmeans"></div>
              <script type="text/javascript">
                 var iris_list = {{ iris_list|safe }}
-                    kMeans("#kmeans", 500, 500, 1000, 3, 10);</script> 
-                </p>
+                kMeans("#kmeans", 400, 400, 150, 3, 10);</script> 
+           
 
                 <div id="text">
                     <h2>2D Visualization</h2>

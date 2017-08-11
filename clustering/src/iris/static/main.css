@@ -12,18 +12,18 @@ h1 {
     text-align: left;
     color:black;
     font-size: 72px;
-    margin: auto;
+    height: 100%;
      text-shadow: .03em .03em 0 white;
      font-family: 'Quicksand', sans-serif;
      padding: 10px;
      background-size: cover;
+     background-image: url("https://www.sap.com/dam/application/imagelibrary/photos/277000/277892.jpg.adapt.1024_600.false.false.false.false.jpg")
 }
 
 div {
     display: flex;
     flex-direction: row; 
-    margin-bottom: 100px;
-    justify-content: center;
+    justify-content: space-around;
     background: white;
 }
 
@@ -61,9 +61,14 @@ h2 {
 img {
     height: 300px;
     padding: 30px;
+    zoom: 120%;
 }
 
 .centroid {
         stroke: #000;
     stroke-width: 2px;
+}
+
+#kmeans {
+   zoom: 120%;
 }
