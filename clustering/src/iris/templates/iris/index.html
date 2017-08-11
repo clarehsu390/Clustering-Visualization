@@ -20,16 +20,16 @@
         
         
         <script>
-            let controller = new ScrollMagic.Controller();
-            // $(function() {
-                let scene = new ScrollMagic.Scene( 
-                    {globalSceneOptions: {
-                        triggerHook: 'onLeave',
-                        triggerElement: "h1"
-                    }})
-                .setPin("h1")
-                .addTo(controller);
-            // });
+            // let controller = new ScrollMagic.Controller();
+            // // $(function() {
+            //     let scene = new ScrollMagic.Scene( 
+            //         {globalSceneOptions: {
+            //             triggerHook: 'onLeave',
+            //             triggerElement: "h1"
+            //         }})
+            //     .setPin("h1")
+            //     .addTo(controller);
+            // // });
         </script> 
             <div class="title intuition">
 
@@ -65,7 +65,10 @@
             <div id="kmeans"></div>
              <script type="text/javascript">
                 var iris_list = {{ iris_list|safe }}
-                kMeans("#kmeans", 400, 400, 150, 3, 10);</script> 
+                setTimeout(function() {
+                kMeans("#kmeans", 400, 400, 150, 3, 10), 5000
+                })
+                ;</script> 
            
 
                 <div id="text">
@@ -93,6 +96,18 @@
                     .setPin(slides[i])
                     .addTo(control);
                 }
+
+                let ctrl = new ScrollMagic.Controller({
+                    globalSceneOptions: {
+                        triggerHook: 'onLeave'
+                    }
+                });
+
+                let twoD = new ScrollMagic.Scene({
+                    triggerElement: "#kmeans",
+                    duration: 500
+                })
+                .addTo(ctrl);
             </script>
     </body>
 </html>
