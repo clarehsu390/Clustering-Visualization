@@ -16,11 +16,7 @@ class Iris(models.Model):
 
 # import csv
 # import os
-# self.objects.all().delete()
-  
-# if Iris.objects.all().count() == 150:
-#   next
-# else:
+
 # with open(os.path.join(os.path.dirname(__file__), 'iris.csv')) as f:
 #     reader = csv.reader(f)
 #     header = next(reader)
@@ -30,18 +26,3 @@ class Iris(models.Model):
 #     petal_width = row[3],
 #     name = row[4]
 #     ) for row in reader])
-    
-
-
-  # def import_db(request): 
-  #   f = open('../../iris.csv', 'r')  
-  #   for line in f:
-  #     line = line.split('!')
-  #     tmp = Person.objects.create()
-  #     tmp.PersonID = line[0]
-  #     tmp.FirstName = line[1]
-  #     tmp.LastName = line[2]
-  #     tmp.Address = line[3]
-  #     tmp.save()
-
-  #   f.close()
