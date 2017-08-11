@@ -5,7 +5,10 @@
         <h1 class="animated fadeInUp">Introduction to Machine Learning: K-means Clustering</h1>
    
         <link rel="stylesheet" type="text/css" href="../../static/main.css"/>
+        <script src="http://x3dom.org/download/1.7/x3dom.js"></script>
         <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="../../static/d3-x3dom-axis.js"></script>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
          <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet"> 
@@ -76,7 +79,96 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </div>
+
+            <div id="3D">
+                3D
+                <x3d id="chartholder"></x3d>
+                <script>
+                    var makeSolid =  function(selection, color) {
+                        selection
+                            .append("appearance")
+                            .append("material")
+                            .attr("diffuseColor", color || "black");
+                        return selection;
+                    }
+
+                    var width = 600;
+                    var height = 400;
+                    
+                    var x3d = d3.select("#chartholder")
+                        .attr("width", width + 'px')
+                        .attr("height", height +'px')
+                        .attr("showLog", 'true')
+                        .attr("showStat", 'true');
+
+                    d3.select('.x3dom-canvas')
+                        .attr("width", 2 * width)
+                        .attr("height", 2 *  height);
+             
+                    var x = d3.scaleLinear().range([0, 40]);
+                    var y = d3.scaleLinear().range([0, 40]);
+                    var z = d3.scaleLinear().range([0, 40]);
+                    var xAxis = d3_x3dom_axis.x3domAxis('x', 'z', x).tickSize(z.range()[1] - z.range()[0]).tickPadding(y.range()[0]);
+                    var yAxis = d3_x3dom_axis.x3domAxis('y', 'z', y).tickSize(z.range()[1] - z.range()[0]);
+                    var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d){return ''});
+                    var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
+
+                    var scene = x3d.append("scene");   
+                    var view_pos = [80, 20, 80];
+                    var fov = 0.8;
+                    var view_or = [0, 1, 0, 0.8];
+                    
+                    scene.append("viewpoint")
+                        .attr("id", 'dvp')
+                        .attr("position", view_pos.join(" "))
+                        .attr("orientation", view_or.join(" "))
+                        .attr("fieldOfView", fov)
+                        .attr("description", "defaultX3DViewpointNode").attr("set_bind", "true");
+
+                    scene.append('group')
+                        .attr('class', 'xAxis')
+                        .call(xAxis)
+                        .select('.domain').call(makeSolid, 'blue');
+                    
+                    scene.append('group')
+                        .attr('class', 'yAxis')
+                        .call(yAxis)
+                        .select('.domain').call(makeSolid, 'red');
+              
+                    scene.append('group')
+                        .attr('class', 'yAxis')
+                        .call(yAxis2)
+                        .select('.domain').call(makeSolid, 'red');
+              
+                    scene.append('group')
+                        .attr('class', 'zAxis')
+                        .call(zAxis)
+                        .select('.domain');
+
+                    var n = 40;
+                    var points = d3.range(n).map(function(d) {
+                        var p = {};
+                        p.x = Math.random();
+                        p.z = Math.random();
+                        p.y = Math.random();
+                        return p;
+                    });
+                
+                    scene.selectAll('.point')
+                        .data(points)
+                        .enter()
+                        .append('transform')
+                        .attr('class', 'point')
+                        .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
+                        .append('shape')
+                        .call(makeSolid, 'orange')
+                        .append('sphere')
+                        .attr('radius', 0.8);
+                </script> 
+            </div>
             <script>
+
+
                
                 let control = new ScrollMagic.Controller({
                     globalSceneOptions: {
