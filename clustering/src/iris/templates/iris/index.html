@@ -1,8 +1,9 @@
 {% load staticfiles %}
 <html>
     <head>
-
-        <h1 class="animated fadeInUp">Introduction to Machine Learning: K-means Clustering</h1>
+        <div class="header">
+        <h1 class="animated fadeInUp">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+        </div>
    
         <link rel="stylesheet" type="text/css" href="../../static/main.css"/>
         <script src="https://d3js.org/d3.v4.js"></script>
@@ -25,10 +26,10 @@
             //     let scene = new ScrollMagic.Scene( 
             //         {globalSceneOptions: {
             //             triggerHook: 'onLeave',
-            //             triggerElement: "h1"
+            //             triggerElement: ".header"
             //         }})
-            //     .setPin("h1")
-            //     .addTo(controller);
+            //     .setPin(".header")
+            //     .addTo(controller)
             // // });
         </script> 
             <div class="title intuition">
@@ -66,7 +67,7 @@
              <script type="text/javascript">
                 var iris_list = {{ iris_list|safe }}
                 setTimeout(function() {
-                kMeans("#kmeans", 400, 400, 150, 3, 10), 5000
+                kMeans("#kmeans", 400, 400, 150, 3, 15), 5000
                 })
                 ;</script> 
            
@@ -91,7 +92,7 @@
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
                         triggerElement: slides[i],
-                        duration: 500
+                        duration: 400
                     })
                     .setPin(slides[i])
                     .addTo(control);

@@ -5,19 +5,30 @@ $yellow: #FCE181;
 $gray: #EDEAE5;  */
 
 html {
-     
+    
 }
 
 h1 {
     text-align: left;
     color:white;
-    font-size: 72px;
-    height: 100%;
+    font-size: 60px;
+    text-align: center;
+    margin: auto;
      text-shadow: .03em .03em 0 black;
      font-family: 'Quicksand', sans-serif;
+     padding: 20px;
      background-size: cover;
+     background: transparent;
+     border: solid 3px white;
+     width: 60%;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-size: cover;
      background-image: url("https://www.sap.com/dam/application/imagelibrary/photos/277000/277892.jpg.adapt.1024_600.false.false.false.false.jpg");
-     
 }
 
 div {
@@ -25,7 +36,7 @@ div {
     flex-direction: row; 
     justify-content: space-around;
     background: white;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
 }
 
 
