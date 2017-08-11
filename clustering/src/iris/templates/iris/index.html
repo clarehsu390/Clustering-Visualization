@@ -40,13 +40,15 @@
                  <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
                 <div id="text">
             <h2>Some Intuition</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
                 </div>
 
             </div>
             <div class="title intro">
                 <div id="text" class="animated fadeInUp">
                 <h2>Introduction to Data Set</h2>
+                <script type="text/javascript" src="../../static/dataset.js"></script>
+                <div class="bar"></div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
                 
@@ -68,10 +70,7 @@
                 
             <div id="kmeans"></div>
              <script type="text/javascript">
-                var iris_list = {{ iris_list|safe }}
-                setTimeout(function() {
-                kMeans("#kmeans", 400, 400, 150, 3, 15), 5000
-                })
+               
                 ;</script> 
            
 
@@ -184,7 +183,8 @@
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
                         triggerElement: slides[i],
-                        duration: 400
+                        duration: 400,
+                        triggerHook: 'onEnter'
                     })
                     .setPin(slides[i])
                     .addTo(control);
@@ -192,15 +192,23 @@
 
                 let ctrl = new ScrollMagic.Controller({
                     globalSceneOptions: {
-                        triggerHook: 'onLeave'
+                        triggerHook: 'onEnter'
                     }
                 });
 
+                     var iris_list = {{ iris_list|safe }}
                 let twoD = new ScrollMagic.Scene({
                     triggerElement: "#kmeans",
-                    duration: 500
+                    triggerHook: 'onEnter',
+                    duration: 200
+                }).on('start', function(e){
+                        if (e.scrollDirection == "FORWARD"){
+                        kMeans("#kmeans", 400, 400, 150, 3, 15);
+
+                        }
                 })
                 .addTo(ctrl);
+
             </script>
     </body>
 </html>
