@@ -14,29 +14,15 @@ class Iris(models.Model):
   name = models.CharField(max_length=255)
 
 
-import csv
-import os
+# import csv
+# import os
 
-with open(os.path.join(os.path.dirname(__file__), 'iris.csv')) as f:
-    reader = csv.reader(f)
-    header = next(reader)
-    Iris.objects.bulk_create([Iris(sepal_length = row[0], 
-    sepal_width = row[1],
-    petal_length = row[2],
-    petal_width = row[3],
-    name = row[4]
-    ) for row in reader])
-
-
-  # def import_db(request): 
-  #   f = open('../../iris.csv', 'r')  
-  #   for line in f:
-  #     line = line.split('!')
-  #     tmp = Person.objects.create()
-  #     tmp.PersonID = line[0]
-  #     tmp.FirstName = line[1]
-  #     tmp.LastName = line[2]
-  #     tmp.Address = line[3]
-  #     tmp.save()
-
-  #   f.close()
+# with open(os.path.join(os.path.dirname(__file__), 'iris.csv')) as f:
+#     reader = csv.reader(f)
+#     header = next(reader)
+#     Iris.objects.bulk_create([Iris(sepal_length = row[0], 
+#     sepal_width = row[1],
+#     petal_length = row[2],
+#     petal_width = row[3],
+#     name = row[4]
+#     ) for row in reader])
