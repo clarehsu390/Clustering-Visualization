@@ -3,19 +3,28 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from .models import Iris
+from .models import Iris, Pca
+
+# from .models import Pca
 
 import json
 
-# Create your views here.
-
+#Create your views here.
+#original version
+# def index(request):
+#     iris = Iris.objects.values("petal_width", "petal_length", "sepal_length", "sepal_width", "name")
+#     iris_list = json.dumps(list(iris))
+#     context = {'iris_list': iris_list}
+#     return render(request,'iris/index.html', context)
+	# return render(request, 'iris/index.html', {})
+#whatever version
 def index(request):
     iris = Iris.objects.values("petal_width", "petal_length", "sepal_length", "sepal_width", "name")
     iris_list = json.dumps(list(iris))
-    context = {'iris_list': iris_list}
+    pca = Pca.objects.values("x", "y", "z", "name")
+    pca_list = json.dumps(list(pca))
+    context = {'iris_list': iris_list, 'pca_list': pca_list}
     return render(request,'iris/index.html', context)
-	# return render(request, 'iris/index.html', {})
-
 # import math
 # import random
 

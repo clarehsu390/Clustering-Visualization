@@ -14,8 +14,15 @@ class Iris(models.Model):
   name = models.CharField(max_length=255)
 
 
-# import csv
-# import os
+class Pca(models.Model):
+  x = models.FloatField()
+  y = models.FloatField()
+  z = models.FloatField()
+  label = models.CharField(max_length=255)
+
+import csv
+import os
+# self.objects.all().delete()
 
 # with open(os.path.join(os.path.dirname(__file__), 'iris.csv')) as f:
 #     reader = csv.reader(f)
@@ -26,3 +33,20 @@ class Iris(models.Model):
 #     petal_width = row[3],
 #     name = row[4]
 #     ) for row in reader])
+<<<<<<< Updated upstream
+=======
+
+
+  # def import_db(request): 
+  #   f = open('../../iris.csv', 'r')  
+  #   for line in f:
+  #     line = line.split('!')
+  #     tmp = Person.objects.create()
+  #     tmp.PersonID = line[0]
+  #     tmp.FirstName = line[1]
+  #     tmp.LastName = line[2]
+  #     tmp.Address = line[3]
+  #     tmp.save()
+
+  #   f.close()
+>>>>>>> Stashed changes
