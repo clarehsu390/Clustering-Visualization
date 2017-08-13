@@ -3,11 +3,12 @@
 
 <head>
     <div class="header">
-        <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+    <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
     </div>
-
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
-    <script src="http://x3dom.org/download/1.7/x3dom.js"></script>
+    <script type="text/javascript" src="http://x3dom.org/x3dom/dist/x3dom-full.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="../../static/d3-x3dom-axis.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
@@ -21,7 +22,6 @@
     <!-- <script src="../../static/dataset.js"></script> -->
     
     
-
 </head>
 
 <body>
@@ -36,7 +36,8 @@
         //     .setPin(".header")
         //     .addTo(controller)
         // // });
-    </script>
+</script>
+
     <div class="title intuition">
 
         <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
@@ -51,7 +52,7 @@
 
     </div>
     <div class="title intro">
-        <div id="text" class="animated fadeInUp">
+        <div id="text">
             <h2>Introduction to Data Set</h2>
            We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
            <ul>
@@ -90,12 +91,11 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </div>
+               
 
     <div class="title 3D" id="3D">
-        3D
-
         <x3d id="chartholder"></x3d>
-        <script>
+            <script>
             var makeSolid = function(selection, color) {
                 selection
                     .append("appearance")
@@ -103,76 +103,73 @@
                     .attr("diffuseColor", color || "black");
                 return selection;
             }
+                    var width = 600;
+                    var height = 400;
+                    
+                    var x3d = d3.select("#chartholder")
+                        .attr("width", width + 'px')
+                        .attr("height", height +'px')
+                        .attr("showLog", 'false')
+                        .attr("showStat", 'false');
 
-            var width = 600;
-            var height = 400;
+                    d3.select('.x3dom-canvas')
+                        .attr("width", 2 * width)
+                        .attr("height", 2 *  height);
+             
+                    var x = d3.scaleLinear().range([0, 40]);
+                    var y = d3.scaleLinear().range([0, 40]);
+                    var z = d3.scaleLinear().range([0, 40]);
+                    var xAxis = d3_x3dom_axis.x3domAxis('x', 'z', x).tickSize(z.range()[1] - z.range()[0]).tickPadding(y.range()[0]);
+                    var yAxis = d3_x3dom_axis.x3domAxis('y', 'z', y).tickSize(z.range()[1] - z.range()[0]);
+                    var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d){return ''});
+                    var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
 
-            var x3d = d3.select("#chartholder")
-                .attr("width", width + 'px')
-                .attr("height", height + 'px')
-                .attr("showLog", 'false')
-                .attr("showStat", 'false');
+                    var scene = x3d.append("scene").attr("id", "the_scene");   
+                    var view_pos = [80, 20, 80];
+                    var fov = 0.8;
+                    var view_or = [0, 1, 0, 0.8];
+                    
+                    scene.append("viewpoint")
+                        .attr("id", 'dvp')
+                        .attr("position", view_pos.join(" "))
+                        .attr("orientation", view_or.join(" "))
+                        .attr("fieldOfView", fov)
+                        .attr("description", "defaultX3DViewpointNode").attr("set_bind", "true");
 
-            d3.select('.x3dom-canvas')
-                .attr("width", 2 * width)
-                .attr("height", 2 * height);
-
-            var x = d3.scaleLinear().range([0, 40]);
-            var y = d3.scaleLinear().range([0, 40]);
-            var z = d3.scaleLinear().range([0, 40]);
-            var xAxis = d3_x3dom_axis.x3domAxis('x', 'z', x).tickSize(z.range()[1] - z.range()[0]).tickPadding(y.range()[0]);
-            var yAxis = d3_x3dom_axis.x3domAxis('y', 'z', y).tickSize(z.range()[1] - z.range()[0]);
-            var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d) {
-                return ''
-            });
-            var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
-
-            var scene = x3d.append("scene").attr("id", "the_scene");
-            var view_pos = [80, 20, 80];
-            var fov = 0.8;
-            var view_or = [0, 1, 0, 0.8];
-
-            scene.append("viewpoint")
-                .attr("id", 'dvp')
-                .attr("position", view_pos.join(" "))
-                .attr("orientation", view_or.join(" "))
-                .attr("fieldOfView", fov)
-                .attr("description", "defaultX3DViewpointNode").attr("set_bind", "true");
-
-            scene.append('group')
-                .attr('class', 'xAxis')
-                .call(xAxis)
-                .select('.domain').call(makeSolid, 'blue');
-
-            scene.append('group')
-                .attr('class', 'yAxis')
-                .call(yAxis)
-                .select('.domain').call(makeSolid, 'red');
-
-            scene.append('group')
-                .attr('class', 'yAxis')
-                .call(yAxis2)
-                .select('.domain').call(makeSolid, 'red');
-
-            scene.append('group')
-                .attr('class', 'zAxis')
-                .call(zAxis)
-                .select('.domain');
-        </script>
-
-        <script src="../../static/kmeans3D.js"></script>
-        <script type="text/javascript">
-            // var iris_list = {{ iris_list|safe }} 
-            kMeans3D("#the_scene", 600, 400, 150, 3, 50)
-        </script>
+                    scene.append('group')
+                        .attr('class', 'xAxis')
+                        .call(xAxis)
+                        .select('.domain').call(makeSolid, 'black');
+                    
+                    scene.append('group')
+                        .attr('class', 'yAxis')
+                        .call(yAxis)
+                        .select('.domain').call(makeSolid, 'black');
+              
+                    scene.append('group')
+                        .attr('class', 'yAxis')
+                        .call(yAxis2)
+                        .select('.domain').call(makeSolid, 'black');
+              
+                    scene.append('group')
+                        .attr('class', 'zAxis')
+                        .call(zAxis)
+                        .select('.domain');
+                </script> 
+                
+                <script src="../../static/kmeans3D.js"></script>
+                <script type="text/javascript">
+                    var pca_list = {{ pca_list|safe }} 
+                    kMeans3D("#the_scene", 600, 400, 150, 3, 15)
+                </script> 
 
     </div>
-    <div class="pca" >
-        <div id="pca">
-        <button onclick="solve()">PCA</button>
-        <br/>
-        <button onclick="move()">Move</button>
-    </div>
+
+
+    <div class="title pca" id="pca">
+            <button onclick="solve()">PCA</button>
+            <button onclick="move()">Move</button>
+        <script src="../../static/pca3d.js"></script>
     </div>
     <script src="../../static/pca3d.js"></script>
     <script>
@@ -184,7 +181,7 @@
         });
 
 
-         let slides = document.querySelectorAll("div#title");
+         let slides = document.querySelectorAll("div.title");
 
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
@@ -193,7 +190,6 @@
                         triggerHook: 'onEnter'
                     })
                     .setPin(slides[i])
-                    .setClassToggle(slides[i], "animated fadeInUp" )
                     .addTo(control);
                     
                 }
