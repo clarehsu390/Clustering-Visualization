@@ -146,8 +146,8 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      */
     function update() {
     
-        // var data = points.concat(centroids);
-        var data = centroids;
+        var data = points.concat(centroids);
+        // var data = centroids;
 
         console.log("Iteration: ", iter);
         data.forEach(function(el){
@@ -156,32 +156,34 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
 
         var circle = scene.selectAll('.data-point').data(data);
         console.log("Circle: ", circle);
-        let ex = circle.exit();
+        let ex = circle.exit().remove();
         console.log("Circle exit: ", ex);
         // ex.forEach((el) => console.log("exit: ", el));
         // circle.exit().remove();  
-        ex.remove();
 
         var newCircle = circle.enter().append('transform')
             .attr("id", function(d) { return d.id; })
             .attr("class", 'data-point')
-            .attr('translation', function(d){
-                console.log("d:", d);
-                console.log("id=" + d.id + ", x=" + d.x  + ", y=" + d.y + ", z=" + d.z);
-                return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z);
-            })
-            .append('shape')
-            .call(makeSolid, function(d){return d.fill;})
+            // .attr('translation', function(d){
+            //     console.log("d:", d);
+            //     console.log("id=" + d.id + ", x=" + d.x  + ", y=" + d.y + ", z=" + d.z);
+            //     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z);
+            // })
+            .append('shape');
+
+            // newCircle.append("appearance")
+            // .append("materials");
+            newCircle.call(makeSolid, function(d){return d.fill;})
+
+            newCircle.append('sphere');
+
+            circle.call(makeSolid, function(d){return d.fill;})
             .append('sphere')
             .attr('radius', 0.8);
 
-        // circle
-        // .transition().delay(100).duration(1000)
-        //     .attr('translation', function(d){ 
-        //         return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});
-        
-    }
-
+            circle.transition().delay(100).duration(1000)
+            .attr('translation', function(d){ 
+                    return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});}
 
     /**
      * Updates the text in the label.
