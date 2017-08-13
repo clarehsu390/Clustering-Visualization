@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 
     <script src="../../static/kmeans.js"></script>
-    <script src="../../static/dataset.js"></script>
+    <!-- <script src="../../static/dataset.js"></script> -->
+    
     
 
 </head>
@@ -89,10 +90,6 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </div>
-               
-
-
-               
 
     <div class="title 3D" id="3D">
         3D
@@ -170,12 +167,14 @@
         </script>
 
     </div>
-
-    <div class="title pca" id="pca">
-            <button onclick="solve()">PCA</button>
-            <button onclick="move()">Move</button>
-        <script src="../../static/pca3d.js"></script>
+    <div class="pca" >
+        <div id="pca">
+        <button onclick="solve()">PCA</button>
+        <br/>
+        <button onclick="move()">Move</button>
     </div>
+    </div>
+    <script src="../../static/pca3d.js"></script>
     <script>
         let control = new ScrollMagic.Controller({
             globalSceneOptions: {

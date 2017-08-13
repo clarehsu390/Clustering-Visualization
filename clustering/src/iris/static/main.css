@@ -89,3 +89,12 @@ img {
 .point {
     z-index: 1;
 }
+
+button {
+    height: 15px;
+}
+
+.pca {
+    width: 70%;
+    display: block;
+}
