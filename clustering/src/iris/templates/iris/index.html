@@ -3,8 +3,7 @@
 
 <head>
     <div class="header">
-
-        <h1 class="animated fadeInUp">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+    <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
     </div>
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -12,14 +11,16 @@
     <script type="text/javascript" src="http://x3dom.org/x3dom/dist/x3dom-full.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="../../static/d3-x3dom-axis.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 
     <script src="../../static/kmeans.js"></script>
-
+    <script src="../../static/dataset.js"></script>
+    
 </head>
 
 <body>
@@ -34,70 +35,73 @@
         //     .setPin(".header")
         //     .addTo(controller)
         // // });
-    </script>
+</script>
+
     <div class="title intuition">
 
         <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
         <div id="text">
             <h2>Some Intuition</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. 
+            The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." 
+            <br>
+            <br>
+            If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
         </div>
 
     </div>
     <div class="title intro">
-        <div id="text" class="animated fadeInUp">
+        <div id="text">
             <h2>Introduction to Data Set</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
+           <ul>
+               <li>sepal length</li>
+               <li>sepal width</li>
+               <li>petal length</li>
+               <li>petal width</li>
+           </ul>
         </div>
 
         <p>
             <svg width="500" height="50">
                     <circle cx="250" cy="25" r="25"/>
                     </svg>
-        </p>
-    </div>
 
-    <div class="title clustering">
-        <div id="text">
-            <h2>K-means Clustering</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+                </p>
+            </div>
 
-    </div>
-    <div class="title 2d">
+            <div class="title clustering">
+                <div id="text">
+                     <h2>K-means Clustering</h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
 
-        <div id="kmeans"></div>
-        <script type="text/javascript" >
-            var iris_list = {{ iris_list | safe}}
-            setTimeout(function() {
-                kMeans("#kmeans", 400, 400, 150, 3, 15), 5000
-            })
-        </script>
+            </div>
+                
+           <div class="title 2d">
+                
+            <div id="kmeans"></div>
+             <script type="text/javascript">
+              </script> 
+           
 
+                <div id="text">
+                    <h2>2D Visualization</h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+            </div>
+               
 
-        <div id="text">
-            <h2>2D Visualization</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
-
-    <div id="3D">
-                3D
-
-                <x3d id="chartholder"></x3d>
-                <script>
-                    var makeSolid =  function(selection, color) {
-                        selection
-                            .append("appearance")
-                            .append("material")
-                            .attr("diffuseColor", color || "black");
-                        return selection;
-                    }
-
+    <div class="title 3D" id="3D">
+        <x3d id="chartholder"></x3d>
+            <script>
+            var makeSolid = function(selection, color) {
+                selection
+                    .append("appearance")
+                    .append("material")
+                    .attr("diffuseColor", color || "black");
+                return selection;
+            }
                     var width = 600;
                     var height = 400;
                     
@@ -159,102 +163,13 @@
                 </script> 
 
     </div>
-<!--
-    <div id="pca">
-        <script>
-            var width = 800,
-                height = 400;
-            var x3d = d3.select("body").append("x3d")
-                .attr("width", width + 'px')
-                .attr("height", height + 'px');
-            d3.select('.x3dom-canvas')
-                .attr("width", 2 * width)
-                .attr("height", 2 * height);
-
-            var makeSolid = function(selection, color) {
-                selection.append("appearance").append("material").attr("diffuseColor", color || "black");
-                return selection;
-            }
-
-            var x = d3.scaleLinear().range([0, 40]);
-            var y = d3.scaleLinear().domain([0, 4]).range([0, 40]);
-            var z = d3.scaleLinear().range([0, 40]);
-            var xAxis = d3_x3dom_axis.x3domAxis('x', 'z', x).tickSize(z.range()[1] - z.range()[0]).tickPadding(y.range()[0]);;
-            var yAxis = d3_x3dom_axis.x3domAxis('y', 'z', y).tickSize(z.range()[1] - z.range()[0]);
-            var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d) {
-                return ''
-            });
-            var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
 
 
-            var scene = x3d.append("scene");
-            var view_pos = [80, 25, 80];
-            var fov = 0.8;
-            var view_or = [0, 1, 0, 0.8];
-            scene.append("viewpoint")
-                .attr("position", view_pos.join(" "))
-                .attr("orientation", view_or.join(" "))
-                .attr("fieldOfView", fov);
-
-            scene.append('group')
-                .attr('class', 'xAxis')
-                .call(xAxis)
-                .select('.domain').call(makeSolid, 'blue');
-            scene.append('group')
-                .attr('class', 'yAxis')
-                .call(yAxis)
-                .select('.domain').call(makeSolid, 'red');
-            scene.append('group')
-                .attr('class', 'yAxis')
-                .call(yAxis2)
-                .select('.domain').call(makeSolid, 'red');
-            scene.append('group')
-                .attr('class', 'zAxis')
-                .call(zAxis)
-                .select('.domain');
-
-            let points;
-
-            var n = 5;
-            var data = [{
-                x: 0.1,
-                y: 0.6,
-                z: 0.3
-            }, {
-                x: 0.3,
-                y: 0.7,
-                z: 0.4
-            }, {
-                x: 0.2,
-                y: 0.9,
-                z: 0.5
-            }, {
-                x: 0.2,
-                y: 0.5,
-                z: 0.1
-            }]
-            points = data.map(function(d) {
-                var p = {};
-                p.x = d.x;
-                p.z = d.z;
-                p.y = d.y;
-                return p;
-            })
-            scene.selectAll('.point')
-                .data(points)
-                .enter()
-                .append('transform')
-                .attr('class', 'point')
-                .attr('translation', function(d) {
-                    return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)
-                })
-                .append('shape')
-                .call(makeSolid, 'red')
-                .append('sphere')
-                .attr('radius', 0.5);
-        </script>
+    <div class="title pca" id="pca">
+            <button onclick="solve()">PCA</button>
+            <button onclick="move()">Move</button>
+        <script src="../../static/pca3d.js"></script>
     </div>
-    -->
     <script>
         let control = new ScrollMagic.Controller({
             globalSceneOptions: {
@@ -264,28 +179,37 @@
         });
 
 
-        let slides = document.querySelectorAll("div.title");
+         let slides = document.querySelectorAll("div.title");
 
-        for (let i = 0; i < slides.length; i++) {
-            new ScrollMagic.Scene({
-                    triggerElement: slides[i],
-                    duration: 400
+                for (let i=0; i < slides.length; i++) {
+                    new ScrollMagic.Scene({
+                        triggerElement: slides[i],
+                        duration: 400,
+                        triggerHook: 'onEnter'
+                    })
+                    .setPin(slides[i])
+                    .addTo(control);
+                    
+                }
+
+                let ctrl = new ScrollMagic.Controller({
+                    globalSceneOptions: {
+                        triggerHook: 'onEnter'
+                    }
+                });
+
+                     var iris_list = {{ iris_list|safe }}
+                let twoD = new ScrollMagic.Scene({
+                    triggerElement: "#kmeans",
+                    triggerHook: 'onEnter',
+                    duration: 200
+                }).on('start', function(e){
+                        if (e.scrollDirection == "FORWARD"){
+                        kMeans("#kmeans", 400, 400, 150, 3, 15);
+
+                        }
                 })
-                .setPin(slides[i])
-                .addTo(control);
-        }
-
-        let ctrl = new ScrollMagic.Controller({
-            globalSceneOptions: {
-                triggerHook: 'onLeave'
-            }
-        });
-
-        let twoD = new ScrollMagic.Scene({
-                triggerElement: "#kmeans",
-                duration: 500
-            })
-            .addTo(ctrl);
+                .addTo(ctrl);
     </script>
 </body>
 
