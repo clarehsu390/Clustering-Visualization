@@ -21,9 +21,6 @@
 </head>
 
 <body>
-
-
-
     <script>
         // let controller = new ScrollMagic.Controller();
         // // $(function() {
@@ -71,15 +68,11 @@
     <div class="title 2d">
 
         <div id="kmeans"></div>
-        <script type="text/javascript">
-            var iris_list = {
-                {
-                    iris_list | safe
-                }
-            };
+        <script type="text/javascript" >
+            var iris_list = {{ iris_list | safe}}
             setTimeout(function() {
                 kMeans("#kmeans", 400, 400, 150, 3, 15), 5000
-            });
+            })
         </script>
 
 
@@ -90,8 +83,9 @@
         </div>
     </div>
 
-    <!-- <div id="3D">
+    <div id="3D">
                 3D
+
                 <x3d id="chartholder"></x3d>
                 <script>
                     var makeSolid =  function(selection, color) {
@@ -108,8 +102,8 @@
                     var x3d = d3.select("#chartholder")
                         .attr("width", width + 'px')
                         .attr("height", height +'px')
-                        .attr("showLog", 'true')
-                        .attr("showStat", 'true');
+                        .attr("showLog", 'false')
+                        .attr("showStat", 'false');
 
                     d3.select('.x3dom-canvas')
                         .attr("width", 2 * width)
@@ -123,7 +117,7 @@
                     var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d){return ''});
                     var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
 
-                    var scene = x3d.append("scene");   
+                    var scene = x3d.append("scene").attr("id", "the_scene");   
                     var view_pos = [80, 20, 80];
                     var fov = 0.8;
                     var view_or = [0, 1, 0, 0.8];
@@ -154,28 +148,16 @@
                         .attr('class', 'zAxis')
                         .call(zAxis)
                         .select('.domain');
-
-                    var n = 40;
-                    var points = d3.range(n).map(function(d) {
-                        var p = {};
-                        p.x = Math.random();
-                        p.z = Math.random();
-                        p.y = Math.random();
-                        return p;
-                    });
-                
-                    scene.selectAll('.point')
-                        .data(points)
-                        .enter()
-                        .append('transform')
-                        .attr('class', 'point')
-                        .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
-                        .append('shape')
-                        .call(makeSolid, 'orange')
-                        .append('sphere')
-                        .attr('radius', 0.8);
                 </script> 
-            </div> -->
+                
+                <script src="../../static/kmeans3D.js"></script>
+                <script type="text/javascript">
+                    // var iris_list = {{ iris_list|safe }} 
+                    kMeans3D("#the_scene", 600, 400, 150, 3, 50)
+                </script> 
+
+    </div>
+
     <div id="pca">
         <script>
             var width = 800,
@@ -262,7 +244,6 @@
                 .append('transform')
                 .attr('class', 'point')
                 .attr('translation', function(d) {
-                    console.log(d)
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)
                 })
                 .append('shape')
