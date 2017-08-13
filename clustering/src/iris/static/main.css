@@ -28,7 +28,7 @@ h1 {
     display: flex;
     justify-content: center;
     background-size: cover;
-     background-image: url("https://www.sap.com/dam/application/imagelibrary/photos/277000/277892.jpg.adapt.1024_600.false.false.false.false.jpg");
+     background-image: url("teal.jpg");
 }
 
 div {
@@ -36,15 +36,15 @@ div {
     flex-direction: row; 
     justify-content: space-around;
     background: white;
-    margin-bottom: 200px;
+    margin-bottom: 50px;
 }
 
 
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Gudea', sans-serif;
-    font-size: 20px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 28px;
     
 }
 
@@ -73,7 +73,7 @@ h2 {
 img {
     height: 300px;
     padding: 30px;
-    zoom: 120%;
+    zoom: 150%;
 }
 
 .centroid {
@@ -82,7 +82,8 @@ img {
 }
 
 #kmeans {
-   zoom: 120%;
+   zoom: 150%;
+   font-size: 20px;
 }
 
 .point {

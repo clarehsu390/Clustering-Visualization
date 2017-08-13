@@ -3,7 +3,7 @@
 
 <head>
     <div class="header">
-        <h1 class="animated fadeInUp">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+        <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
     </div>
 
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 
     <script src="../../static/kmeans.js"></script>
+    <script src="../../static/dataset.js"></script>
     
 
 </head>
@@ -40,16 +41,24 @@
         <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
         <div id="text">
             <h2>Some Intuition</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. 
+            The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." 
+            <br>
+            <br>
+            If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
         </div>
 
     </div>
     <div class="title intro">
         <div id="text" class="animated fadeInUp">
             <h2>Introduction to Data Set</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
+           <ul>
+               <li>sepal length</li>
+               <li>sepal width</li>
+               <li>petal length</li>
+               <li>petal width</li>
+           </ul>
         </div>
 
         <p>
@@ -85,7 +94,7 @@
 
                
 
-    <div id="3D">
+    <div class="title 3D" id="3D">
         3D
 
         <x3d id="chartholder"></x3d>
@@ -162,7 +171,7 @@
 
     </div>
 
-    <div id="pca">
+    <div class="title pca" id="pca">
             <button onclick="solve()">PCA</button>
             <button onclick="move()">Move</button>
         <script src="../../static/pca3d.js"></script>
@@ -176,7 +185,7 @@
         });
 
 
-         let slides = document.querySelectorAll("div.title");
+         let slides = document.querySelectorAll("div#title");
 
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
@@ -185,7 +194,9 @@
                         triggerHook: 'onEnter'
                     })
                     .setPin(slides[i])
+                    .setClassToggle(slides[i], "animated fadeInUp" )
                     .addTo(control);
+                    
                 }
 
                 let ctrl = new ScrollMagic.Controller({
