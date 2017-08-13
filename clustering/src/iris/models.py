@@ -33,20 +33,3 @@ import os
 #     petal_width = row[3],
 #     name = row[4]
 #     ) for row in reader])
-<<<<<<< Updated upstream
-=======
-
-
-  # def import_db(request): 
-  #   f = open('../../iris.csv', 'r')  
-  #   for line in f:
-  #     line = line.split('!')
-  #     tmp = Person.objects.create()
-  #     tmp.PersonID = line[0]
-  #     tmp.FirstName = line[1]
-  #     tmp.LastName = line[2]
-  #     tmp.Address = line[3]
-  #     tmp.save()
-
-  #   f.close()
->>>>>>> Stashed changes

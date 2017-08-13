@@ -21,7 +21,7 @@ import json
 def index(request):
     iris = Iris.objects.values("petal_width", "petal_length", "sepal_length", "sepal_width", "name")
     iris_list = json.dumps(list(iris))
-    pca = Pca.objects.values("x", "y", "z", "name")
+    pca = Pca.objects.values("x", "y", "z", "label")
     pca_list = json.dumps(list(pca))
     context = {'iris_list': iris_list, 'pca_list': pca_list}
     return render(request,'iris/index.html', context)
