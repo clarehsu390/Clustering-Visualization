@@ -227,7 +227,7 @@ var t = d3.timer(function() {
 
     circle.enter().append("circle")
     // #9FEDD7
-        .attr("fill", 'steelblue')
+        .attr("fill", '#FCE181')
         .attr("cx", function(d, i) {
             return X(d[0]);
         })
