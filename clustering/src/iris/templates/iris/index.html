@@ -7,7 +7,7 @@
    
         <link rel="stylesheet" type="text/css" href="../../static/main.css"/>
         <script src="http://x3dom.org/download/1.7/x3dom.js"></script>
-        <script src="https://d3js.org/d3.v4.js"></script>
+         <script src="https://d3js.org/d3.v4.js"></script> 
         <script src="../../static/d3-x3dom-axis.js"></script>
         <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
         <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
@@ -47,14 +47,43 @@
             <div class="title intro">
                 <div id="text" class="animated fadeInUp">
                 <h2>Introduction to Data Set</h2>
+                
                 <script type="text/javascript" src="../../static/dataset.js"></script>
-                <div class="bar"></div>
+                
+                <div class="bar-graph"></div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
                 
                   <p>
-                    <svg width="500" height="50">
-                    <circle cx="250" cy="25" r="25"/>
+                  <div class="left">
+		<div class="leftButtons">
+		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(0)" value ="Iris Setosa">
+        	</div>
+<!--         	&nbsp;
+ -->		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(1)" value="Iris Versicolor">
+        	</div>
+<!--         	&nbsp;
+ -->		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(2)" value="Iris Virginica">
+        	</div>
+        </div>
+        <div class="rightButtons">
+        	<div class="dataSelector">
+        		<input type="radio" name="data-selector" checked onclick="changeAttribute(0)">Sepal Length
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(1)">Sepal Width
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(2)">Petal Length
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(3)">Petal Width
+        	</div>
+        </div>
+    </div>
                     </svg>
                 </p>
             </div>

@@ -1,37 +1,35 @@
-let margin = {top: 10, right: 30, bottom: 30, left: 30},
-width = 960 - margin.left - margin.right,
-height = 500 - margin.top - margin.bottom
+var margin = {top: 30, right: 50, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-let svg = d3.select(".bar").append("svg")
-.attr("width", width + margin.left + margin. right)
-.attr("height", height + margin.top + margin.bottom)
-.append("g")
-.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("body").append("svg") // data join
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
+  	.append("g")
+  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-let xScale = d3.scaleLinear()
-.range([0, width]);
+var xScale = d3.scaleLinear()
+	.rangeRound([0, width]);
 
-let xAxis;
+var xAxis;
 
-let yScale = d3.scaleLinear()
-.range([height, 0]);
+var yScale = d3.scaleLinear()
+	.range([height, 0]);
 
-let attribute_selector = 0;
+var attribute_selector = 0; // to select sepal width, petal length etc.
 
-let headerText = "Iris Setosa: Sepal Length";
+var headerText = "Iris Setosa: Sepal Length";
 
-drawHist = function(i) {}
+drawHist = function (i) {}
 
-d3.csv("../../iris.csv", start)
+d3.csv("static/iris.csv", start)
 
-function start (err, data) {
-	if (err)
-		console.error(err);
+function start (data){
 
 	var nested = d3.nest()
-		.key(function (d) {return d.type})
+		.key(function (d) {return d.Name})
 		.entries(data);
-
+	
 	for (j = 0; j < 3; j++) {
 
 		nested[j].sepal_length_array = [];
@@ -40,10 +38,10 @@ function start (err, data) {
 		nested[j].petal_width_array = [];
 
 		for (i = 0; i < nested[j].values.length; i++) {
-			nested[j].sepal_length_array.push(+nested[j].values[i].sepal_length)
-			nested[j].sepal_width_array.push(+nested[j].values[i].sepal_length)
-			nested[j].petal_length_array.push(+nested[j].values[i].petal_length)
-			nested[j].petal_width_array.push(+nested[j].values[i].sepal_length)
+			nested[j].sepal_length_array.push(+nested[j].values[i].Sepal_Length)
+			nested[j].sepal_width_array.push(+nested[j].values[i].Sepal_Width)
+			nested[j].petal_length_array.push(+nested[j].values[i].Petal_Length)
+			nested[j].petal_width_array.push(+nested[j].values[i].Petal_Width)
 		}
 	}
 
@@ -68,57 +66,57 @@ function start (err, data) {
 		switch (attribute_selector) {
 			case 0:
 				headerText += "Sepal Length";
-				xScale.domain(d3.extent(nested[i].sepal_length_array));
-				binsData = d3.layout.histogram().bins(xScale.ticks(10))(nested[i].sepal_length_array);
+				binsData = d3.histogram().thresholds(10)(nested[i].sepal_length_array);
+				console.log(binsData);
 				break;
 			case 1:
 				headerText += "Sepal Width";
 				xScale.domain(d3.extent(nested[i].sepal_width_array));
-				binsData = d3.layout.histogram().bins(xScale.ticks(10))(nested[i].sepal_width_array);
+				binsData = d3.histogram().thresholds(10)(nested[i].sepal_width_array);
 				break;
 			case 2:
 				headerText += "Petal Length";
 				xScale.domain(d3.extent(nested[i].petal_length_array));
-				binsData = d3.layout.histogram().bins(xScale.ticks(10))(nested[i].petal_length_array);
+				binsData = d3.histogram().thresholds(10)(nested[i].petal_length_array);
 				break;
 			case 3:
 				headerText += "Petal Width";
 				xScale.domain(d3.extent(nested[i].petal_width_array));
-				binsData = d3.layout.histogram().bins(xScale.ticks(10))(nested[i].petal_width_array);
+				binsData = d3.histogram().thresholds(10)(nested[i].petal_width_array);
 				break;
 		}
 
-
-		yScale.domain([0, d3.max(binsData, function(d) { return d.y; })])
+		yScale.domain([0, d3.max(binsData, function(d){ return d.length} )]);
 
 		var barContent = svg.selectAll(".bar")
 		    .data(binsData)
 		
 		var barEnter = barContent.enter().append("g")
 		    .attr("class", "bar")
-		    .attr("transform", function(d) { return "translate(" + xScale(d.x) + "," + yScale(d.y)	 + ")"; });
+		    .attr("transform", function(d) { return "translate(" + xScale(d.x1-d.x0) + "," + yScale(d.length)	 + ")"; });
 		
 		barEnter.append("rect")
 	    	.attr("x", 1)
 	    	.attr("width", 110)
-	    	.attr("height", function(d) { return height - yScale(d.y); });
+			.attr("height", function(d) { console.log(yScale(d.length));return height - yScale(d.length); });
+		console.log(height)
 
 		barEnter.append("text")
 		    .attr("dy", ".75em")
 		    .attr("y", 6)
 		    .attr("x", 50)
 		    .attr("text-anchor", "middle")
-		    .text(function(d) { return d.y; });
+		    .text(function(d) { return d.length; });
 
 		var updateSelection = svg.selectAll(".bar")
 			.transition()
 			.duration(500)
-		    .attr("transform", function(d) { return "translate(" + xScale(d.x) + "," + yScale(d.y)	 + ")"; });
+		    .attr("transform", function(d) { return "translate(" + xScale(d.x0)+2 + "," + yScale(d.length)	 + ")"; });
 
 		updateSelection.select("rect")
 	    	.attr("x", 1)
 	    	.attr("width", 110)
-	    	.attr("height", function(d) { return height - yScale(d.y); });
+	    	.attr("height", function(d) { console.log(height); return height - yScale(d.length); });
 
 	    barContent.exit()
 	    	.transition()
@@ -126,11 +124,10 @@ function start (err, data) {
 	    	.style("opacity", "0")
 	    	.remove();	
 		
-		xAxis = d3.svg.axis()
+		xAxis = d3.axisBottom()
 		    .scale(xScale)
-		    .orient("bottom")
 		    .tickSize(-height)
-		    .tickPadding(10);
+		    .tickPadding(8);
 
 		svg.append("g")
 		    .attr("class", "axis")
@@ -188,5 +185,6 @@ function displayHist (i) {
 			break;
 	}
 }
+
 
 
