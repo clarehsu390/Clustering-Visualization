@@ -90,11 +90,24 @@ img {
     z-index: 1;
 }
 
-button {
-    height: 15px;
+.pca_button {
+    /* margin-left: 30px;
+    padding: 10px; */
+    /* float: left;   */
+    /* margin: 10px; */
+    display: block;    
+    /* position: absolute;  */
 }
 
-.pca {
-    width: 70%;
-    display: block;
+button {
+    height: 20px;
+    width: 45px;
 }
+
+#pca {
+    /* position: relative; */
+     /* float: right;  */
+     width: 50%; 
+}
+
+

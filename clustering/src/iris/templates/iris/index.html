@@ -54,7 +54,7 @@
     <div class="title intro">
         <div id="text">
             <h2>Introduction to Data Set</h2>
-           We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
+           We will be using a simple example to draw our visualizations. This data set contains 150 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
            <ul>
                <li>sepal length</li>
                <li>sepal width</li>
@@ -65,33 +65,39 @@
 
         <p>
             <svg width="500" height="50">
-                    <circle cx="250" cy="25" r="25"/>
-                    </svg>
+                <circle cx="250" cy="25" r="25"/>
+            </svg>
+        </p>
+    </div>
 
-                </p>
-            </div>
+    <div class="title clustering">
+        <div id="text">
+                <h2>K-means Clustering</h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
 
-            <div class="title clustering">
-                <div id="text">
-                     <h2>K-means Clustering</h2>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-
-            </div>
+    </div>
                 
-           <div class="title 2d">
-                
-            <div id="kmeans"></div>
-             <script type="text/javascript">
-              </script> 
+    <div class="title 2d">
+        <div id="kmeans"></div>
+        <script type="text/javascript"></script> 
            
+        <div id="text">
+            <h2>2D Visualization</h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
 
-                <div id="text">
-                    <h2>2D Visualization</h2>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
+    <div class="title pca">
                
+        <div id="text">
+            <h2>Principal Component Analysis</h2>
+            Principal Component Analysis (PCA) is a technique used to emphasize variation and bring out strong pattern in a dataset. It's often used to make data easy to explore and visualize.
+        </div>
+        <div id="pca">
+                <script src="../../static/pca3d.js"></script>
+        </div>
+    </div>
 
     <div class="title 3D" id="3D">
         <x3d id="chartholder"></x3d>
@@ -166,12 +172,6 @@
     </div>
 
 
-    <div class="title pca" id="pca">
-            <button onclick="solve()">PCA</button>
-            <button onclick="move()">Move</button>
-        <script src="../../static/pca3d.js"></script>
-    </div>
-    <script src="../../static/pca3d.js"></script>
     <script>
         let control = new ScrollMagic.Controller({
             globalSceneOptions: {
