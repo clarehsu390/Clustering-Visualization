@@ -1,6 +1,6 @@
 
 function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
-
+    
     // the current iteration
     var iter = 1,
         centroids = [],
