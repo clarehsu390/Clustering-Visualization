@@ -226,7 +226,8 @@ var t = d3.timer(function() {
         });
 
     circle.enter().append("circle")
-        .attr("fill", '#9FEDD7')
+    // #9FEDD7
+        .attr("fill", 'steelblue')
         .attr("cx", function(d, i) {
             return X(d[0]);
         })
@@ -237,8 +238,13 @@ var t = d3.timer(function() {
 
     circle.exit().remove();
 
-    if (++numSamples > 5) {
+    if (++numSamples > 10) {
         t.stop();
+        setTimeout(function(){
+            solve();
+            setTimeout(move(), 1500)}
+        , 1500)
+        
       }
 
     // return ++numSamples > 5;
