@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 
     <script src="../../static/kmeans.js"></script>
-    <!-- <script src="../../static/dataset.js"></script> -->
-    
     
 </head>
 
@@ -35,7 +33,7 @@
         //         }})
         //     .setPin(".header")
         //     .addTo(controller)
-        // // });
+        // });
 </script>
 
     <div class="title intuition">
@@ -61,7 +59,49 @@
                <li>petal length</li>
                <li>petal width</li>
            </ul>
+		<div class="leftButtons">
+		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(0)" value ="Iris Setosa">
+        	</div>
+<!--         	&nbsp;
+ -->		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(1)" value="Iris Versicolor">
+        	</div>
+<!--         	&nbsp;
+ -->		    <div>
+        		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(2)" value="Iris Virginica">
+        	</div>
         </div>
+        <div class="rightButtons">
+        	<div class="dataSelector">
+        		<input type="radio" name="data-selector" checked onclick="changeAttribute(0)">Sepal Length
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(1)">Sepal Width
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(2)">Petal Length
+        	</div>
+		    <div class="dataSelector">
+        		<input type="radio" name="data-selector" onclick="changeAttribute(3)">Petal Width
+        	</div>
+        </div>
+             <script src="../../static/dataset.js"></script>
+            <div id="bar"></div>
+        </div>
+
+            </div>
+
+            <div class="title clustering">
+                <div id="text">
+                     <h2>K-means Clustering</h2>
+                    Using the Iris data set, we will be visualizing a machine learning algorithm known as K-means Clustering. K represents the number of clusters.
+                    <br>
+                    <br>
+                    The goal of K-means clustering is to find groups of data, where each data point is assigned to a single group. Points are grouped together based on similar features. Each group contains a centroid, which is the collection of features for the resulting group. 
+
+                </div>
+
 
         <p>
             <svg width="500" height="50">
@@ -76,6 +116,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
 
+
     </div>
                 
     <div class="title 2d">
@@ -88,7 +129,24 @@
         </div>
     </div>
 
+
+                <div id="text">
+                    <h2>2D Visualization</h2>
+                    The algorithm works iteratively to group data points together. Centroids can either be randomly generated or randomly selected from the data set. In our example, centroids are randomly generated. 
+                    <br>
+                    <br>
+                    In the first iteration, each data point is assigned to its nearest centroid. Then with each following iteration, the centroids positions are updated. Data points may be reassigned to a different cluster depending on which centroid it is closest too.
+                    <br>
+                    <br>
+                    The iteration continues until a maximum number of iterations is reached.
+                </div>
+            </div>
+               
+
+
+
     <div class="title pca">
+
                
         <div id="text">
             <h2>Principal Component Analysis</h2>
