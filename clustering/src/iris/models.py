@@ -20,9 +20,10 @@ class Pca(models.Model):
   z = models.FloatField()
   label = models.CharField(max_length=255)
 
-import csv
-import os
-# self.objects.all().delete()
+
+# read data from csv file
+# import csv
+# import os
 
 # with open(os.path.join(os.path.dirname(__file__), 'iris.csv')) as f:
 #     reader = csv.reader(f)
