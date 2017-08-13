@@ -1,7 +1,7 @@
 function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
 
-    console.log("scene",scene);
-    console.log("makeSolid", makeSolid);
+    // console.log("scene",scene);
+    // console.log("makeSolid", makeSolid);
 
     // the current iteration
     var iter = 1,
@@ -113,6 +113,8 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      * Moves the centroids to the center of their cluster.
      */
     function moveCentroids() {
+        
+        // console.log("iteration-before", centriods);
         centroids.forEach(function(d) {
             // Get clusters based on their fill color
             var cluster = points.filter(function(e) {
@@ -125,6 +127,8 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
             d.y = center[1];
             d.z = center[2];
         });
+        // console.log("iteration-after", centriods);
+
     }
 
     /**
@@ -141,9 +145,13 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
             .attr("class", 'point')
             .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
             .append('shape')
-            .call(makeSolid, 'orange')
+            .call(makeSolid, function(d){return d.fill})
             .append('sphere')
             .attr('radius', 0.8);
+
+
+        
+        circle.exit().remove();
             
         // Remove old nodes
         // circle.exit().remove();

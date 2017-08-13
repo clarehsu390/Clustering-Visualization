@@ -21,9 +21,6 @@
 </head>
 
 <body>
-
-
-
     <script>
         // let controller = new ScrollMagic.Controller();
         // // $(function() {
@@ -71,15 +68,11 @@
     <div class="title 2d">
 
         <div id="kmeans"></div>
-        <script type="text/javascript">
-            var iris_list = {
-                {
-                    iris_list | safe
-                }
-            };
+        <script type="text/javascript" >
+            var iris_list = {{ iris_list | safe}}
             setTimeout(function() {
                 kMeans("#kmeans", 400, 400, 150, 3, 15), 5000
-            });
+            })
         </script>
 
 
@@ -159,10 +152,8 @@
                 
                 <script src="../../static/kmeans3D.js"></script>
                 <script type="text/javascript">
-                    var iris_list = {{ iris_list|safe }} 
-                    // var scene = document.getElementById("the_scene") 
-                    // var makeSolid = makeSolid
-                    kMeans3D("#the_scene", 600, 400, 150, 3, 1)
+                    // var iris_list = {{ iris_list|safe }} 
+                    kMeans3D("#the_scene", 600, 400, 150, 3, 50)
                 </script> 
 
     </div>
@@ -253,7 +244,6 @@
                 .append('transform')
                 .attr('class', 'point')
                 .attr('translation', function(d) {
-                    console.log(d)
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)
                 })
                 .append('shape')
