@@ -1,8 +1,5 @@
 function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
-
-    // console.log("scene",scene);
-    // console.log("makeSolid", makeSolid);
-
+    
     // the current iteration
     var iter = 1,
         centroids = [],
@@ -35,12 +32,10 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
         for (var i = 0; i < num; i++) {
             var color = colors[i % 3];
             var point = {
-                // x: Math.round(50 * pca_list[i].x),
-                // y: Math.round(50 * pca_list[i].y),
-                // z: Math.round(50 * pca_list[i].z),
-                x: Math.random(),
-                y: Math.random(),
-                z: Math.random(),
+                x: pca_list[i].x,
+                y: pca_list[i].y,
+                z: pca_list[i].z,
+                label: pca_list[i].label,
                 type: type,
                 fill: color
             };
@@ -55,9 +50,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
        for (let i=0; i < num; i++) {
            let color = colors[i % 3];
         let centroid = {
-            // x: Math.round(50 * pca_list[Math.round(Math.random() * 150)].x),
-            // y: Math.round(50 * pac_list[Math.round(Math.random() * 150)].y),
-            // z: Math.round(50 * pac_list[Math.round(Math.random() * 150)].z),
             x: 0.5,
             y: 0.5,
             z: 0.5,
@@ -92,15 +84,7 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
     function colorizePoints() {
         points.forEach(function(d, i, arr) {
             var closest = findClosestCentroid(d);
-            // console.log("d", d);
-            // console.log("arr[i]", arr[i]);
-            // console.log("d-id: " +arr[i].id + ". d-fill: " +  arr[i].fill);
-            // console.log("closest", closest);
             arr[i].fill = closest.fill;
-            // console.log("after-d", d);
-            // console.log("after: arr[i]", arr[i]);
-            // console.log("closest-fill", closest.fill);
-            // console.log("d-id: " + arr[i].id + ". after-d-fill: " + arr[i].fill);
         });
 
         // points = points.map(function(d) {
@@ -161,7 +145,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
     function update() {
     
         var data = points.concat(centroids);
-        // var data = centroids;
 
         console.log("Iteration: ", iter);
         data.forEach(function(el){
@@ -177,11 +160,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
         var newCircle = circle.enter().append('transform')
             .attr("id", function(d) { return d.id; })
             .attr("class", 'data-point')
-            // .attr('translation', function(d){
-            //     console.log("d:", d);
-            //     console.log("id=" + d.id + ", x=" + d.x  + ", y=" + d.y + ", z=" + d.z);
-            //     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z);
-            // })
             .append('shape');
 
             newCircle.append("appearance")
@@ -189,7 +167,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
             // newCircle.call(makeSolid, function(d){return d.fill;})
 
             newCircle.append('sphere');
-
 
             circle.selectAll("shape appearance material")
             .attr("diffuseColor", function(d){return d.fill;})
@@ -202,10 +179,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});}
 
     /**
-     * Updates the text in the label.
-     */
-    
-    /**
      * Executes one iteration of the algorithm:
      * - Fill the points with the color of the closest centroid (this makes it 
      *   part of its cluster)
@@ -214,9 +187,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      
     function iterate() {
         
-        // Update label
-        // setText("Iteration " + iter);
-
         // Colorize the points
         colorizePoints();
         
@@ -239,18 +209,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
         
         // initial drawing
         update();
-        // var data = centroids;
-        // var circle = scene.selectAll('.data-point').data(data);
-        // console.log("Circle: ", circle);
-        // var newCircle = circle.enter().append('transform')
-        //     .attr("id", function(d) { return d.id; })
-        //     .attr("class", 'data-point')
-        //     .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
-        //     .append('shape')
-        //     .call(makeSolid, function(d){return d.fill})
-        //     .append('sphere')
-        //     .attr('radius', 0.8);
-
         
         var interval = setInterval(function() {
             if(iter < maxIter + 1) {

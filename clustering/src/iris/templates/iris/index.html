@@ -94,7 +94,6 @@
                 <x3d id="chartholder"></x3d>
                 <script>
                     var makeSolid =  function(selection, color) {
-                        console.log("Make solid: ", color);
                         selection
                             .append("appearance")
                             .append("material")
@@ -158,7 +157,7 @@
                 
                 <script src="../../static/kmeans3D.js"></script>
                 <script type="text/javascript">
-                    // var iris_list = {{ iris_list|safe }} 
+                    var pca_list = {{ pca_list|safe }} 
                     kMeans3D("#the_scene", 600, 400, 150, 3, 15)
                 </script> 
 
