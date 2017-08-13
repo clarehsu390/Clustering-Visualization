@@ -1,83 +1,213 @@
+function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
 
-var makeSolid =  function(selection, color) {
-            selection
-                .append("appearance")
-                .append("material")
-                .attr("diffuseColor", color || "black");
-            return selection;
+    // console.log("scene",scene);
+    // console.log("makeSolid", makeSolid);
+
+    // the current iteration
+    var iter = 1,
+        centroids = [],
+        points = [];
+        
+    var margin = {top: 30, right: 20, bottom: 20, left: 30},
+        width = w - margin.left - margin.right,
+        height = h - margin.top - margin.bottom;
+
+    var colors = ['#FCE181','#EDEAE5', '#9FEDD7' ];
+    
+    /**
+     * Computes the euclidian distance between two points.
+     */
+    function getEuclidianDistance(a, b) {
+        var dx = b.x - a.x,
+            dy = b.y - a.y, 
+            dz = b.z - a.z;
+        return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2) + Math.pow(dz, 2));
+    }
+    
+    /**
+     * Returns a point with the specified type and fill color and with random 
+     * x,y-coordinates.
+     */
+    
+    function initializePoints(num, type) {
+        
+        var result = [];
+        for (var i = 0; i < num; i++) {
+            var color = colors[i];
+            var point = {
+                // x: Math.round(50 * pca_list[i].x),
+                // y: Math.round(50 * pca_list[i].y),
+                // z: Math.round(50 * pca_list[i].z),
+                x: Math.random(),
+                y: Math.random(),
+                z: Math.random(),
+                type: type,
+                fill: color
+            };
+            point.id = point.type + "-" + i;
+            result.push(point);
         }
+        return result;
+    }
 
-        var width = 600;
-        var height = 400;
-      
-        var x3d = d3.select("#chartholder")
-            .attr("width", width + 'px')
-            .attr("height", height +'px')
-            .attr("showLog", 'true')
-            .attr("showStat", 'true');
+    function initializeCentroids(num, type) {
+        let result = [];
+       for (let i=0; i < num; i++) {
+           let color = colors[i];
+        let centroid = {
+            // x: Math.round(50 * pca_list[Math.round(Math.random() * 150)].x),
+            // y: Math.round(50 * pac_list[Math.round(Math.random() * 150)].y),
+            // z: Math.round(50 * pac_list[Math.round(Math.random() * 150)].z),
+            x: Math.random(),
+            y: Math.random(),
+            z: Math.random(),
+            type: type,
+            fill: color
+            };
+        centroid.id = centroid.type + "-" + i;
+        result.push(centroid);
+       }
+       return result;
+    }
 
-        d3.select('.x3dom-canvas')
-            .attr("width", 2 * width)
-            .attr("height", 2 *  height);
- 
-        var x = d3.scaleLinear().range([0, 40]);
-        var y = d3.scaleLinear().range([0, 40]);
-        var z = d3.scaleLinear().range([0, 40]);
-        var xAxis = d3_x3dom_axis.x3domAxis('x', 'z', x).tickSize(z.range()[1] - z.range()[0]).tickPadding(y.range()[0]);
-        var yAxis = d3_x3dom_axis.x3domAxis('y', 'z', y).tickSize(z.range()[1] - z.range()[0]);
-        var yAxis2 = d3_x3dom_axis.x3domAxis('y', 'x', y).tickSize(x.range()[1] - x.range()[0]).tickFormat(function(d){return ''});
-        var zAxis = d3_x3dom_axis.x3domAxis('z', 'x', y).tickSize(x.range()[1] - x.range()[0]);
+    /**
+     * Find the centroid that is closest to the specified point.
+     */
 
-        var scene = x3d.append("scene");   
-        var view_pos = [80, 20, 80];
-        var fov = 0.8;
-        var view_or = [0, 1, 0, 0.8];
-        
-        scene.append("viewpoint")
-            .attr("id", 'dvp')
-            .attr("position", view_pos.join(" "))
-            .attr("orientation", view_or.join(" "))
-            .attr("fieldOfView", fov)
-            .attr("description", "defaultX3DViewpointNode").attr("set_bind", "true");
-
-        scene.append('group')
-            .attr('class', 'xAxis')
-            .call(xAxis)
-            .select('.domain').call(makeSolid, 'blue');
-        
-        scene.append('group')
-            .attr('class', 'yAxis')
-            .call(yAxis)
-            .select('.domain').call(makeSolid, 'red');
-  
-        scene.append('group')
-            .attr('class', 'yAxis')
-            .call(yAxis2)
-            .select('.domain').call(makeSolid, 'red');
-  
-        scene.append('group')
-            .attr('class', 'zAxis')
-            .call(zAxis)
-            .select('.domain');
-
-        var n = 40;
-        var points = d3.range(n).map(function(d) {
-            var p = {};
-            p.x = Math.random();
-            p.z = Math.random();
-            p.y = Math.random();
-            return p;
+    function findClosestCentroid(point) {
+        var closest = {i: -1, distance: width * 2};
+        centroids.forEach(function(d, i) {
+            var distance = getEuclidianDistance(d, point);
+            // Only update when the centroid is closer
+            if (distance < closest.distance) {
+                closest.i = i;
+                closest.distance = distance;
+            }
         });
-  
-        scene.selectAll('.point')
-            .data(points)
-            .enter()
-            .append('transform')
-            .attr('class', 'point')
+        return (centroids[closest.i]); 
+    }
+    
+     // All points assume the color of the closest centroid.
+     
+    function colorizePoints() {
+        points.forEach(function(d) {
+            var closest = findClosestCentroid(d);
+            d.fill = closest.fill;
+        });
+    }
+
+    /**
+     * Computes the center of the cluster by taking the mean of the x,y and z 
+     * coordinates.
+     */
+
+    function computeClusterCenter(cluster) {
+        return [
+            d3.mean(cluster, function(d) { return d.x; }), 
+            d3.mean(cluster, function(d) { return d.y; }),
+            d3.mean(cluster, function(d) { return d.z; }),
+        ];
+    }
+    
+    /**
+     * Moves the centroids to the center of their cluster.
+     */
+    function moveCentroids() {
+        
+        // console.log("iteration-before", centriods);
+        centroids.forEach(function(d) {
+            // Get clusters based on their fill color
+            var cluster = points.filter(function(e) {
+                return e.fill === d.fill;
+            });
+            // Compute the cluster centers
+            var center = computeClusterCenter(cluster);
+            // Move the centroid
+            d.x = center[0];
+            d.y = center[1];
+            d.z = center[2];
+        });
+        // console.log("iteration-after", centriods);
+
+    }
+
+    /**
+     * Updates the chart.
+     */
+    function update() {
+    
+        var data = points.concat(centroids);
+
+        var circle = scene.selectAll('.point').data(data);
+            
+        circle.enter().append('transform')
+            .attr("id", function(d) { return d.id; })
+            .attr("class", 'point')
             .attr('translation', function(d){ return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)})
             .append('shape')
-            .call(makeSolid, 'orange')
+            .call(makeSolid, function(d){return d.fill})
             .append('sphere')
             .attr('radius', 0.8);
 
+
         
+        circle.exit().remove();
+            
+        // Remove old nodes
+        // circle.exit().remove();
+    }
+
+    /**
+     * Updates the text in the label.
+     */
+    
+    /**
+     * Executes one iteration of the algorithm:
+     * - Fill the points with the color of the closest centroid (this makes it 
+     *   part of its cluster)
+     * - Move the centroids to the center of their cluster.
+     */
+     
+    function iterate() {
+        
+        // Update label
+        // setText("Iteration " + iter);
+
+        // Colorize the points
+        colorizePoints();
+        
+        // Move the centroids
+        moveCentroids();
+        
+        // Update the chart
+        update();
+    }
+
+    /** 
+     * The main function initializes the algorithm and calls an iteration every 
+     * two seconds.
+     */
+    function initialize() {
+        
+        // Initialize random points and centroids
+        centroids = initializeCentroids(numClusters, "centroid");
+        points = initializePoints(numPoints, "point");
+        
+        // initial drawing
+        update();
+        
+        var interval = setInterval(function() {
+            if(iter < maxIter + 1) {
+                iterate();
+                iter++;
+            } else {
+                clearInterval(interval);
+                // setText("Done");
+            }
+        }, 2 * 1000);
+    }
+
+    // Call the main function
+    initialize();
+}
+

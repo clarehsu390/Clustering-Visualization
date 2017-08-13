@@ -18,6 +18,9 @@ import json
 #     return render(request,'iris/index.html', context)
 	# return render(request, 'iris/index.html', {})
 #whatever version
+
+# Create your views here.
+
 def index(request):
     iris = Iris.objects.values("petal_width", "petal_length", "sepal_length", "sepal_width", "name")
     iris_list = json.dumps(list(iris))

@@ -84,3 +84,7 @@ img {
 #kmeans {
    zoom: 120%;
 }
+
+.point {
+    z-index: 1;
+}
