@@ -5,7 +5,7 @@ var margin = {
         left: 50
     },
     width = 700 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;
 
 var X = d3.scaleLinear()
     .range([0, width]);
@@ -13,7 +13,7 @@ var X = d3.scaleLinear()
 var Y = d3.scaleLinear()
     .range([height, 0]);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#pca").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -44,7 +44,7 @@ var components = svg.selectAll("line")
 
 components.exit().remove();
 components.enter().append('line')
-    .attr('stroke', 'green')
+    .attr('stroke', '#026670')
     .attr('x1', function(d) {
         return X(d[0][0]);
     })
@@ -226,6 +226,7 @@ var t = d3.timer(function() {
         });
 
     circle.enter().append("circle")
+    // #9FEDD7
         .attr("fill", 'steelblue')
         .attr("cx", function(d, i) {
             return X(d[0]);
@@ -233,12 +234,17 @@ var t = d3.timer(function() {
         .attr("cy", function(d, i) {
             return Y(d[1]);
         })
-        .attr("r", 1);
+        .attr("r", 2);
 
     circle.exit().remove();
 
-    if (++numSamples > 5) {
+    if (++numSamples > 10) {
         t.stop();
+        setTimeout(function(){
+            solve();
+            setTimeout(move(), 1500)}
+        , 1500)
+        
       }
 
     // return ++numSamples > 5;
