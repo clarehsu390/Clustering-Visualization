@@ -258,7 +258,8 @@
                     triggerHook: 'onEnter',
                     duration: 200
                 }).on('start', function(e){
-                        if (e.scrollDirection == "FORWARD"){
+                    let x = 0;
+                        if (e.scrollDirection == "FORWARD" && x === 0){
                         kMeans("#kmeans", 400, 400, 150, 3, 15);
 
                         }
