@@ -33,8 +33,6 @@ import os
 #     petal_width = row[3],
 #     name = row[4]
 #     ) for row in reader])
-<<<<<<< Updated upstream
-=======
 
 
   # def import_db(request): 
@@ -49,4 +47,3 @@ import os
   #     tmp.save()
 
   #   f.close()
->>>>>>> Stashed changes
