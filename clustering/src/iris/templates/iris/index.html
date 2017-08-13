@@ -35,7 +35,8 @@
         //     .setPin(".header")
         //     .addTo(controller)
         // // });
-    </script>
+</script>
+
     <div class="title intuition">
 
         <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
@@ -50,7 +51,7 @@
 
     </div>
     <div class="title intro">
-        <div id="text" class="animated fadeInUp">
+        <div id="text">
             <h2>Introduction to Data Set</h2>
            We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
            <ul>
@@ -185,7 +186,7 @@
         });
 
 
-         let slides = document.querySelectorAll("div#title");
+         let slides = document.querySelectorAll("div.title");
 
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
@@ -194,7 +195,6 @@
                         triggerHook: 'onEnter'
                     })
                     .setPin(slides[i])
-                    .setClassToggle(slides[i], "animated fadeInUp" )
                     .addTo(control);
                     
                 }
