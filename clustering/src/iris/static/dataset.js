@@ -2,7 +2,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var svg = d3.select("body").append("svg") // data join
+var svg = d3.select("#bar").append("svg") // data join
 	.attr("width", width + margin.left + margin.right)
 	.attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -22,7 +22,7 @@ var headerText = "Iris Setosa: Sepal Length";
 
 drawHist = function (i) {}
 
-d3.csv("iris.csv", start)
+d3.csv("static/iris.csv", start)
 
 function start (err, data) {
 	if (err)
@@ -96,7 +96,7 @@ function start (err, data) {
 		
 		var barEnter = barContent.enter().append("g")
 		    .attr("class", "bar")
-		    .attr("transform", function(d) { return "translate(" + (xScale(dx1 - dx0)-2) + "," + yScale(d.length)	 + ")"; });
+		    .attr("transform", function(d) { return "translate(" + (xScale(d.x1 - d.x0)-2) + "," + yScale(d.length)	 + ")"; });
 		
 		barEnter.append("rect")
 	    	.attr("x", 1)
@@ -126,9 +126,8 @@ function start (err, data) {
 	    	.style("opacity", "0")
 	    	.remove();	
 		
-		xAxis = d3.svg.axis()
+		xAxis = d3.axisBottom()
 		    .scale(xScale)
-		    .orient("bottom")
 		    .tickSize(-height)
 		    .tickPadding(10);
 
