@@ -3,7 +3,7 @@
 
 <head>
     <div class="header">
-        <h1 class="animated fadeInUp">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+        <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
     </div>
 
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
@@ -41,14 +41,24 @@
         <img src="http://angkorbeauty.net/upload_images/images/taller1.png" alt="">
         <div id="text">
             <h2>Some Intuition</h2>
-            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
+            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. 
+            The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." 
+            <br>
+            <br>
+            If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
         </div>
 
     </div>
     <div class="title intro">
         <div id="text" class="animated fadeInUp">
             <h2>Introduction to Data Set</h2>
-           We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: sepal length, sepal width, petal length, and petal width. 
+           We will be using a simple example to draw our visualizations. This data set contains 50 examples from three species of Iris flowers: Iris Setosa, Iris Virginica, Iris Versicolor. Four features are measured from each sample: 
+           <ul>
+               <li>sepal length</li>
+               <li>sepal width</li>
+               <li>petal length</li>
+               <li>petal width</li>
+           </ul>
         </div>
 
         <p>
@@ -175,7 +185,7 @@
         });
 
 
-         let slides = document.querySelectorAll("div.title");
+         let slides = document.querySelectorAll("div#title");
 
                 for (let i=0; i < slides.length; i++) {
                     new ScrollMagic.Scene({
@@ -184,7 +194,9 @@
                         triggerHook: 'onEnter'
                     })
                     .setPin(slides[i])
+                    .setClassToggle(slides[i], "animated fadeInUp" )
                     .addTo(control);
+                    
                 }
 
                 let ctrl = new ScrollMagic.Controller({

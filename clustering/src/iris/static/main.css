@@ -43,8 +43,8 @@ div {
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Gudea', sans-serif;
-    font-size: 20px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 28px;
     
 }
 
@@ -73,7 +73,7 @@ h2 {
 img {
     height: 300px;
     padding: 30px;
-    zoom: 120%;
+    zoom: 150%;
 }
 
 .centroid {
@@ -82,7 +82,8 @@ img {
 }
 
 #kmeans {
-   zoom: 120%;
+   zoom: 150%;
+   font-size: 20px;
 }
 
 .point {
