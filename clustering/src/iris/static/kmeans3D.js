@@ -1,5 +1,5 @@
 function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
-    
+
     // the current iteration
     var iter = 1,
         centroids = [],
@@ -86,20 +86,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
             var closest = findClosestCentroid(d);
             arr[i].fill = closest.fill;
         });
-
-        // points = points.map(function(d) {
-        //     var closest = findClosestCentroid(d);
-        //     console.log("d", d);
-        //     console.log("d-id: " +d.id + ". d-fill: " +  d.fill);
-        //     console.log("closest", closest);
-                // d.x += 0.1;
-                // d.y += 0.1;
-        //     d.fill = closest.fill;
-        //     console.log("after-d", d);
-        //     console.log("closest-fill", closest.fill);
-        //     console.log("d-id: " + d.id + ". after-d-fill: " + d.fill);
-        //     return d;
-        // });
     }
 
     /**
@@ -146,16 +132,8 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
     
         var data = points.concat(centroids);
 
-        console.log("Iteration: ", iter);
-        data.forEach(function(el){
-            console.log("id: " + el.id + ". fill: " + el.fill);
-        });
-
         var circle = scene.selectAll('.data-point').data(data);
-        // console.log("Circle: ", circle);
-        let ex = circle.exit().remove();
-        // console.log("Circle exit: ", ex);
-    
+        var ex = circle.exit().remove();
 
         var newCircle = circle.enter().append('transform')
             .attr("id", function(d) { return d.id; })
@@ -164,16 +142,18 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
 
             newCircle.append("appearance")
             .append("material");
-            // newCircle.call(makeSolid, function(d){return d.fill;})
 
-            newCircle.append('sphere');
+            newCircle.append('sphere')
+            .attr('radius', function(d){ 
+                if (d.type === "centroid") {
+                    return 1.3;}
+                else {
+                    return 0.5; 
+                }});
 
             circle.selectAll("shape appearance material")
-            .attr("diffuseColor", function(d){return d.fill;})
-            // circle.call(makeSolid, function(d){return d.fill;})
-            // .append('sphere')
-            // .attr('radius', 0.8);
-
+            .attr("diffuseColor", function(d){return d.fill;});
+            
             circle.transition().delay(100).duration(1000)
             .attr('translation', function(d){ 
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});}

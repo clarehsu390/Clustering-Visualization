@@ -9,9 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
-    <script type="text/javascript" src="../../static/scatter_plot_3d_demo.js"></script>
-
-    <!-- <script src="http://x3dom.org/download/1.7/x3dom.js"></script> -->
     <script type="text/javascript" src="http://x3dom.org/x3dom/dist/x3dom-full.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="../../static/d3-x3dom-axis.js"></script>
@@ -137,17 +134,17 @@
                     scene.append('group')
                         .attr('class', 'xAxis')
                         .call(xAxis)
-                        .select('.domain').call(makeSolid, 'blue');
+                        .select('.domain').call(makeSolid, 'black');
                     
                     scene.append('group')
                         .attr('class', 'yAxis')
                         .call(yAxis)
-                        .select('.domain').call(makeSolid, 'red');
+                        .select('.domain').call(makeSolid, 'black');
               
                     scene.append('group')
                         .attr('class', 'yAxis')
                         .call(yAxis2)
-                        .select('.domain').call(makeSolid, 'red');
+                        .select('.domain').call(makeSolid, 'black');
               
                     scene.append('group')
                         .attr('class', 'zAxis')
