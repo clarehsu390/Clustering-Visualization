@@ -89,6 +89,7 @@ img {
    zoom: 120%;
 }
 
+<<<<<<< HEAD
 	.top {
     	position: absolute;
     	left:0; right:0;
@@ -162,3 +163,8 @@ img {
 	.tick {
 		stroke: 1px #fff solid;
 	}
+
+.point {
+    z-index: 1;
+}
+
