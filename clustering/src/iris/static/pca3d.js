@@ -13,7 +13,7 @@ var X = d3.scaleLinear()
 var Y = d3.scaleLinear()
     .range([height, 0]);
 
-var svg = d3.select("#pca").append("svg")
+var svg_pca = d3.select("#pca").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -28,7 +28,7 @@ var xdata = [],
 var finalData;
 
 
-var components = svg.selectAll("line")
+var components = svg_pca.selectAll("line")
     .data([
         [
             [0.5, 0.5],
@@ -110,7 +110,7 @@ function solve() {
     var eigs = eig.E.x;
 
     // Plot eig unit vectors centered at the mean
-    var components = svg.selectAll("line")
+    var components = svg_pca.selectAll("line")
         .data([
             [
                 [x_mean, y_mean],
@@ -146,14 +146,12 @@ function solve() {
     var data = [x_adjust, y_adjust];
 
     finalData = numeric.transpose(numeric.dot(featureVectorRow, data));
-
-    console.log(finalData);
 }
 
 function move() {
     var n = xdata.length;
     // Move the axis lines to normal positions
-    var components = svg.selectAll("line")
+    var components = svg_pca.selectAll("line")
         .data([
             [
                 [0.5, 0.5],
@@ -172,7 +170,7 @@ function move() {
 
 
     // plot the new lower dimensional data
-    var circle = svg.selectAll("circle");
+    var circle = svg_pca.selectAll("circle");
     //.data(finalData, function(d, i){ return d;});
 
     circle
@@ -220,7 +218,7 @@ var t = d3.timer(function() {
 
     }
 
-    var circle = svg.selectAll("circle")
+    var circle = svg_pca.selectAll("circle")
         .data(numeric.transpose([xdata, ydata]), function(d) {
             return d;
         });
@@ -244,7 +242,7 @@ var t = d3.timer(function() {
             solve();
             setTimeout(move(), 1500)}
         , 1500)
-        
+
       }
 
     // return ++numSamples > 5;
