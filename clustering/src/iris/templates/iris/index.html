@@ -7,7 +7,8 @@
     </div>
 
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
-    <script src="http://x3dom.org/download/1.7/x3dom.js"></script>
+    <!-- <script src="http://x3dom.org/download/1.7/x3dom.js"></script> -->
+    <script type="text/javascript" src="http://x3dom.org/x3dom/dist/x3dom-full.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="../../static/d3-x3dom-axis.js"></script>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
@@ -153,11 +154,11 @@
                 <script src="../../static/kmeans3D.js"></script>
                 <script type="text/javascript">
                     // var iris_list = {{ iris_list|safe }} 
-                    kMeans3D("#the_scene", 600, 400, 150, 3, 50)
+                    kMeans3D("#the_scene", 600, 400, 150, 3, 15)
                 </script> 
 
     </div>
-
+<!--
     <div id="pca">
         <script>
             var width = 800,
@@ -252,6 +253,7 @@
                 .attr('radius', 0.5);
         </script>
     </div>
+    -->
     <script>
         let control = new ScrollMagic.Controller({
             globalSceneOptions: {
