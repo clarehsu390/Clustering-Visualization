@@ -1,6 +1,6 @@
 
 function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
-
+    
     // the current iteration
     var iter = 1,
         centroids = [],
@@ -82,7 +82,7 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
         centroid.id = centroid.type + "-" + i;
         result.push(centroid);
        }
-       console.log(result);
+
        return result;
     }
 
