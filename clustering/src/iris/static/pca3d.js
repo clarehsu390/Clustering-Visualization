@@ -93,6 +93,7 @@ function solve() {
     });
     var y_adjust = ydata.map(function(num) {
         return num - y_mean;
+
     });
 
     // Calculate the covariance

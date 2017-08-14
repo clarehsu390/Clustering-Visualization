@@ -78,7 +78,7 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
             y: Math.round(50 * iris_list[Math.round(Math.random() * 20)].petal_width),
             type: type,
             fill: color
-            }
+            };
         centroid.id = centroid.type + "-" + i;
         result.push(centroid);
        }
@@ -158,7 +158,7 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
             .attr("r", 5);
             
         // Update old elements as needed
-        circle.transition().delay(100).duration(1000)
+        circle.transition().delay(10).duration(100)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
             .style("fill", function(d) { return d.fill; });
