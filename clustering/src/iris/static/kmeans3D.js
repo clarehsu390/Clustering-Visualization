@@ -1,5 +1,4 @@
 function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
-
     // the current iteration
     var iter = 1,
         centroids = [],
@@ -129,7 +128,7 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      * Updates the chart.
      */
     function update() {
-    
+
         var data = points.concat(centroids);
 
         var circle = scene.selectAll('.data-point').data(data);
@@ -150,13 +149,16 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
                 else {
                     return 0.5; 
                 }});
-
+                
             circle.selectAll("shape appearance material")
             .attr("diffuseColor", function(d){return d.fill;});
             
             circle.transition().delay(100).duration(1000)
             .attr('translation', function(d){ 
-                    return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});}
+                    return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});
+
+        
+                }
 
     /**
      * Executes one iteration of the algorithm:
@@ -166,8 +168,10 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      */
      
     function iterate() {
-        
         // Colorize the points
+
+
+
         colorizePoints();
         
         // Move the centroids
@@ -182,7 +186,6 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
      * two seconds.
      */
     function initialize() {
-        
         // Initialize random points and centroids
         centroids = initializeCentroids(numClusters, "centroid");
         points = initializePoints(numPoints, "point");
