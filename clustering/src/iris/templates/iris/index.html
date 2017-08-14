@@ -96,7 +96,7 @@
 
 
         <div class="bar">
-          <script src="../../static/dataset.js"></script>
+          <!-- <script src="../../static/dataset.js"></script> -->
 
         </div>
     </div>
@@ -149,6 +149,7 @@
     </div>
 
     <div class="title 3D" id="3D">
+        <div id="3D visualizations">
         <x3d id="chartholder"></x3d>
             <script>
             var makeSolid = function(selection, color) {
@@ -212,12 +213,13 @@
                         .select('.domain');
                 </script> 
                 
-                <script src="../../static/kmeans3D.js"></script>
-                <script type="text/javascript">
-                    
-                
-                    
-                </script> 
+                <script type="text/javascript" src="../../static/kmeans3D.js"></script>
+                </div>
+
+                <div id="text">
+                <h2>3D Visualization</h2>
+                    We adopted PCA analysis to reduce Iris's four attributes (sepal length, sepal width, petal length and petal width) into three and visualize the dynamic clustering process 
+                </div>
 
     </div>
 
@@ -272,7 +274,7 @@
                 let threed_ctrl = new ScrollMagic.Controller();
 
                 let threeD = new ScrollMagic.Scene({
-                    triggerElement: "#3D",
+                    triggerElement: "#chartholder",
                     duration: 200
                 }).on('start', function(e) {
                     console.log("Hello");
