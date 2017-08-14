@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <div class="header">
+    <div class="first">
     <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
     </div>
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
@@ -67,6 +67,8 @@
                <li>petal length</li>
                <li>petal width</li>
            </ul>
+         </div>
+       
 		<div class="leftButtons">
 		    <div>
         		<input class = "selectorButtons" type="button" name="data-selector" onclick="displayHist(0)" value ="Iris Setosa">
@@ -81,6 +83,7 @@
         	</div>
         </div>
         <div class="rightButtons">
+        <div class="radio" >
         	<div class="dataSelector">
         		<input type="radio" name="data-selector" checked onclick="changeAttribute(0)">Sepal Length
         	</div>
@@ -92,15 +95,19 @@
         	</div>
 		    <div class="dataSelector">
         		<input type="radio" name="data-selector" onclick="changeAttribute(3)">Petal Width
-        	</div>
-        </div>
-
-
-        <div class="bar">
+            </div>
+            </div>
+         <div class="bar">
            <script src="../../static/dataset.js"></script> 
 
         </div>
-    </div>
+
+        </div>
+
+
+       
+       
+   
 
 
     </div>
@@ -116,6 +123,7 @@
             The algorithm works iteratively to group data points together. Centroids can either be randomly generated or randomly selected from the data set. In our example, centroids are randomly generated. 
             <br>
             <br>
+            The two dimensions are petal length and petal width.
             In the first iteration, each data point is assigned to its nearest centroid. Then with each following iteration, the centroids positions are updated. Data points may be reassigned to a different cluster depending on which centroid it is closest too.
             <br>
             <br>
@@ -130,7 +138,7 @@
             Principal Component Analysis (PCA) is a technique used to  transform a high-dimensional dataset into a lower-dimensional subspace prior to running a machine learning algorithm on the data. It makes data easy to describe and visualize.
         </div>
         <div id="pca">
-            <button onclick="solve()">PCA Solve</button>
+            <button class="pca" onclick="solve()">PCA Solve</button>
              <script src="../../static/pca3d.js"></script>   
         </div>
     </div>
@@ -244,9 +252,9 @@
                 }
 
                 let ctrl = new ScrollMagic.Controller({
-                    // globalSceneOptions: {
-                    //     triggerHook: 'onEnter'
-                    // }
+                    globalSceneOptions: {
+                        triggerHook: 'onEnter'
+                    }
                 });
                     var count = 0;
                      var iris_list = {{ iris_list|safe }}
