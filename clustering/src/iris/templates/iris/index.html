@@ -97,7 +97,7 @@
 
 
         <div class="bar">
-          <!-- <script src="../../static/dataset.js"></script> -->
+           <script src="../../static/dataset.js"></script> 
 
         </div>
     </div>
@@ -270,7 +270,7 @@
                     triggerHook: 'onEnter',
                     duration: 200
                 }).on('start', function(e){
-                        console.log("count",count);
+                        
                         if (e.scrollDirection == "FORWARD" && count === 0){
                         kMeans("#kmeans", 400, 400, 150, 3, 15);
                         count += 1;

@@ -145,25 +145,21 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
      */
     function update() {
     
-        var data = points.concat(centroids);
+        let data = points.concat(centroids);
         
-        // The data join
-        var circle = group.selectAll("circle")
+        let circle = group.selectAll("circle")
             .data(data);
             
-        // Create new elements as needed
         circle.enter().append("circle")
             .attr("id", function(d) { return d.id; })
             .attr("class", function(d) { return d.type; })
             .attr("r", 5);
             
-        // Update old elements as needed
         circle.transition().delay(10).duration(100)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
             .style("fill", function(d) { return d.fill; });
         
-        // Remove old nodes
         circle.exit().remove();
     }
 

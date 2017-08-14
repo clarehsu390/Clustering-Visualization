@@ -1,6 +1,8 @@
-## Clustering Visualization
+# Clustering Visualiztion
 
-### Background
+[LiveSite][Clustering]
+
+[Clustering]: https://clustervisualization.herokuapp.com/
 
 Machine learning has become particularly popular in the recent years. Computers are able to perform complex tasks without human interference. We wanted to introduce the basics of machine learning.
 
@@ -8,68 +10,126 @@ For our project, we have decided to build data visualizations of a machine learn
 
 Clustering is often used in the industry to study user purchase behavior or group images and videos.
 
-### Functionality & MVP
-- [ ] Display D3 visualization of k-means clustering algorithm in 2D and 3D diagrams
-- [ ] Users can scroll through page to view different points in the algorithm
-- [ ] Complete narrative/description of each point in the clustering algorithm
-- [ ] Design a clean user interface including animations for the 2D and 3D diagrams
+![Website](https://user-images.githubusercontent.com/26496447/29264745-1d17c0b8-8093-11e7-9db0-7541651c65a7.gif)
 
-### Wireframes
+## Features
 
-![wireframes](wireframes/Cluster.png)
+  * Users can scroll through page to view visualizations of K-means clustering
+  * Explains how the K-means clustering algorithm is implemented
+  * Animated visualizations using D3.js and X3Dom.js
 
-### Technologies & Technical Challenges
 
-This data visualization will be implemented using:
-- Django as our backend framework
-- PostgreSQL as our database
-- D3 to create our 2D and 3D visualization
-- CSS/HTML for styling the webpage
+## Project Design
+[dev-readme]: docs/README.md
+[wireframes]: docs/wireframes
 
-The primary technical challenges will be:
-- Finding a suitable dataset for display (attributes must be as descriptive as possible)
-- Learning to create animated diagrams using D3
+[Development README][dev-readme]
 
-The data visualization will be created on our own k-means clustering algorithm, in 2 dimensions and 3 dimensions. We will be displaying intermediate steps in the algorithm to show the process. Our final goal is to have our algorithm group all the data points into clusters based on similar attributes.
+[Wireframes][wireframes]
 
-### Things We Accomplished Over the Weekend
-1. Prepared the sample data set by using python and Jupyter Notebook to learn how to use D3
-![Python](scatter_point.png)
-- Followed online tutorials to help guide us through the process
-2. Used D3 to visualized our sample data set in 2D
-![d3 visualization](scatterplot.gif)
-3. Learned basic Python and Django to prepare for the week's work
-[Resources](https://docs.google.com/document/d/1Qs32dAd-ItVgU6k9laTzrlrHUBuL6g7luZtPh_a3kQE/edit?usp=sharing)
-4. Setup our flex project repo on Github
 
-### Implementation Timeline
-To allow this project to be productive as well as a successful learning experience, we have to rotate roles during the week. All of us will help in the frontend design of the project as well as participate in writing the algorithm. This way, by the end of the week, we will all have an understanding and know how to use Python, Django, and D3.
+#### D3.js - Animated Visualiztions
 
-**Day 1**: Get started on the infrastructure of the project and begin implementing our cluster algorithm
-- Will have the dataset finalized which we will be representing for our project (Hui)
-- Begin implementation of k-means clustering algorithm (Wen)
-- Setup the PostgreSQL database/seed database and help with clustering algorithm (Clare)
+Our webpage relies on D3 to render visualizations of the algorithm. The D3 library allows for data to be displayed dynamically. This library uses HTML, CSS, and SVG to manipulate the DOM. Below is an example of how we used D3 to update the position of the centroids for our 2D visualization.
 
-**Day 2**: Work on Django backend and 2D clustering visualization
-- Setting up the backbone of Django and writing necessary methods (Hui)
-- Begin using D3 to create 2D visualization (Wen)
-- Start working on the narrative/description of our webpage - outline (Clare)
-- Setup basic webpage design (all)
+```javascript
+function update() {
+    
+        let data = points.concat(centroids);
+        
+        let circle = group.selectAll("circle")
+            .data(data);
+            
+        circle.enter().append("circle")
+            .attr("id", function(d) { return d.id; })
+            .attr("class", function(d) { return d.type; })
+            .attr("r", 5);
+            
+        circle.transition().delay(10).duration(100)
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+            .style("fill", function(d) { return d.fill; });
+        
+        circle.exit().remove();
+    }
 
-**Day 3**: Continue working on 2D visualization and begin 3D visualization
-- Finish 2D visualization if incomplete from day 2 (Clare)
-- Begin 3D clustering display using D3 (Hui)
-- Should be able to show the final result of the clustering algorithm in our visualizations (all)
-- Continue working narrative/description - hopefully finish that by the end of the day (Wen)
+```
 
-**Day 4**: Dedicate to designing/finalizing the webpage
-- The narrative will match up with different points of the clustering algorithm (all)
-- Continue 3D clustering visualization and include on webpage
 
-**Day 5**: Final touchups/Production README
-- Work on production README.md and push to Github (all)
-- Setup Github Pages to have live link (Clare)
-- Implement edits as needed for final webpage (all)
 
-### Bonus features:
-- Compare and contrast time complexity with other clustering algorithms
+
+#### 2D K-means Clustering
+
+K-means Clustering algorithm calculates the distance between each data point and its centroid. The data point is then assigned to the closest centroid, resulting in clusters. This algorithm works iteratively until a maximum number of iterations is reached. We then render the result using D3.js.
+
+```javascript
+function moveCentroids() {
+        centroids.forEach(function(d) {
+            
+            let cluster = points.filter(function(e) {
+                return e.fill === d.fill;
+            });
+           
+            let center = computeClusterCenter(cluster);
+          
+            d.x = center[0];
+            d.y = center[1];
+        });
+    }
+
+function findClosestCentroid(point) {
+        let closest = {i: -1, distance: width * 2};
+        centroids.forEach(function(d, i) {
+            let distance = getEuclidianDistance(d, point);
+            
+            if (distance < closest.distance) {
+                closest.i = i;
+                closest.distance = distance;
+            }
+        });
+        return (centroids[closest.i]); 
+    }
+    
+```
+
+![Click](https://user-images.githubusercontent.com/26496447/29265125-aa51d706-8094-11e7-9751-8138702e5a13.gif)
+
+#### PCA - Principal Component Analysis
+Principal Component Analysis (PCA) is a technique used to transform a high-dimensional dataset into a lower-dimensional subspace prior to running a machine learning algorithm on the data. It makes data easy to describe and visualize. 
+![Click](https://user-images.githubusercontent.com/26496447/29265623-9334b6fe-8096-11e7-9b77-9b1b608be457.gif)
+
+
+#### X3DOM - 3D Visualization
+This library allows DOM manipulation in a 3D space. We are able to animate the K-means algorithm using 3D scene. The scene can be dragged to be viewed at different angles in space. 
+
+![Click](https://user-images.githubusercontent.com/26496447/29265793-31b09528-8097-11e7-91e9-1f84d959cc82.gif)
+
+
+
+#### ScrollMagic - Scroll Interactions
+
+ScrollMagic.io allows animations or functions to be invoked based on a scroll trigger element. We set the trigger element to be a certain HTML element. When the user scrolls and reaches that element on the page, the function is invoked.
+
+```javascript
+   let twoD = new ScrollMagic.Scene({
+                    triggerElement: "#kmeans",
+                    triggerHook: 'onEnter',
+                    duration: 200
+                }).on('start', function(e){
+                        if (e.scrollDirection == "FORWARD" && count === 0){
+                        kMeans("#kmeans", 400, 400, 150, 3, 15);
+                        count += 1;
+
+                        }
+                })
+                .addTo(ctrl);
+
+}
+```
+
+
+## Future features
+
+#### Adding a real life example analysis
+We want to use our algorithm to visualize a practical example (i.e customer segmentation or social circles)
+
