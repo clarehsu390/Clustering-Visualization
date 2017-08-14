@@ -140,9 +140,7 @@ function start (err, data) {
 				// .attr("x", 50)
 				.attr("x", (xScale(binsData[0].x1) - xScale(binsData[0].x0))/2)
 		    .attr("text-anchor", "middle")
-		    .text(function(d) { 
-					// console.log(formatCount(d.length)); 
-					return formatCount(d.length); });
+		    // .text(function(d) { return formatCount(d.length); });
 
 		var updateSelection = svg.selectAll(".bar")
 			.transition()
