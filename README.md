@@ -60,44 +60,57 @@ function update() {
 
 #### 2D K-means Clustering
 
-The dictionary used in the game was built on a trie data structure, allowing for efficient search. The structure starts with a root node which is an empty string. Every other node represents a word or prefix of one or more words. Each node represents a character, and each node's descendants have a common prefix.
+K-means Clustering algorithm calculates the distance between each data point and its centroid. The data point is then assigned to the closest centroid, resulting in clusters. This algorithm works iteratively until a maximum number of iterations is reached. We then render the result using D3.js.
 
 ```javascript
-contains(word) {
-  let currentNode = this.root;
-  //check to see if character node exists in children
-  for(let i = 0; i < word.length; i++) {
-    let char = word[i];
-    if (currentNode.children[char]){
-      //next depth of the trie
-      currentNode = currentNode.children[char];
+function moveCentroids() {
+        centroids.forEach(function(d) {
+            
+            let cluster = points.filter(function(e) {
+                return e.fill === d.fill;
+            });
+           
+            let center = computeClusterCenter(cluster);
+          
+            d.x = center[0];
+            d.y = center[1];
+        });
     }
-    else {
-      //not a valid word
-      return false;
+
+function findClosestCentroid(point) {
+        let closest = {i: -1, distance: width * 2};
+        centroids.forEach(function(d, i) {
+            let distance = getEuclidianDistance(d, point);
+            
+            if (distance < closest.distance) {
+                closest.i = i;
+                closest.distance = distance;
+            }
+        });
+        return (centroids[closest.i]); 
     }
-  }
-  return currentNode.isWord;
-}
+    
 ```
 
 
 
 #### ScrollMagic - Scroll Interactions
 
-After a word is selected and verified, those squares will be replaced by new letters. Users can also click the 'reset' button to reset the board.
+ScrollMagic.io allows animations or functions to be invoked based on a scroll trigger element. We set the trigger element to be a certain HTML element. When the user scrolls and reaches that element on the page, the function is invoked.
 
 ```javascript
-replace() {
+   let twoD = new ScrollMagic.Scene({
+                    triggerElement: "#kmeans",
+                    triggerHook: 'onEnter',
+                    duration: 200
+                }).on('start', function(e){
+                        if (e.scrollDirection == "FORWARD" && count === 0){
+                        kMeans("#kmeans", 400, 400, 150, 3, 15);
+                        count += 1;
 
-    const $selected = $(".selected");
-    $selected.each(function(index) {
-      const letter = LETTERS[Math.floor(Math.random() * LETTERS.length)];
-      let newLetter = $($selected[index]);
-      newLetter.text(letter);
-    });
-    $(".selected").addClass("animated fadeInUp");
-    $(".square").removeClass("selected");
+                        }
+                })
+                .addTo(ctrl);
 
 }
 ```
@@ -105,8 +118,8 @@ replace() {
 
 ## Future features
 
-#### Adding Levels
-Allow users to choose different levels of difficulty.
+#### Adding a real life example analysis
+We want to use our algorithm to visualize a practical example (i.e customer segmentation or social circles)
 
 #### Bonuses
 Depending on the difficulty of the word, certain words will receive extra points.
