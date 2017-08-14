@@ -208,7 +208,7 @@ function kMeans3D() {
                 clearInterval(interval);
                 // setText("Done");
             }
-        }, 10 * 1000);
+        }, 15 * 1000);
     }
 
     // Call the main function
