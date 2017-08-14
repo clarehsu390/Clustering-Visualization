@@ -56,7 +56,7 @@ function update() {
 ```
 
 
-![Click](https://user-images.githubusercontent.com/26496447/29265125-aa51d706-8094-11e7-9751-8138702e5a13.gif)
+
 
 #### 2D K-means Clustering
 
@@ -92,6 +92,18 @@ function findClosestCentroid(point) {
     
 ```
 
+![Click](https://user-images.githubusercontent.com/26496447/29265125-aa51d706-8094-11e7-9751-8138702e5a13.gif)
+
+#### PCA - Principal Component Analysis
+Principal Component Analysis (PCA) is a technique used to transform a high-dimensional dataset into a lower-dimensional subspace prior to running a machine learning algorithm on the data. It makes data easy to describe and visualize. 
+![Click](https://user-images.githubusercontent.com/26496447/29265623-9334b6fe-8096-11e7-9b77-9b1b608be457.gif)
+
+
+#### X3DOM - 3D Visualization
+This library allows DOM manipulation in a 3D space. We are able to animate the K-means algorithm using 3D scene. The scene can be dragged to be viewed at different angles in space. 
+
+![Click](https://user-images.githubusercontent.com/26496447/29265793-31b09528-8097-11e7-91e9-1f84d959cc82.gif)
+
 
 
 #### ScrollMagic - Scroll Interactions
@@ -121,5 +133,3 @@ ScrollMagic.io allows animations or functions to be invoked based on a scroll tr
 #### Adding a real life example analysis
 We want to use our algorithm to visualize a practical example (i.e customer segmentation or social circles)
 
-#### Bonuses
-Depending on the difficulty of the word, certain words will receive extra points.
