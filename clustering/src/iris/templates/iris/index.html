@@ -2,9 +2,7 @@
 <html>
 
 <head>
-    <div class="first">
-    <h1 class="animated fadeIn">INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
-    </div>
+
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../../static/main.css" />
@@ -23,19 +21,26 @@
     
 </head>
 
-<body>
-    <script>
-        // let controller = new ScrollMagic.Controller();
-        // // $(function() {
-        //     let scene = new ScrollMagic.Scene( 
-        //         {globalSceneOptions: {
-        //             triggerHook: 'onLeave',
-        //             triggerElement: ".header"
-        //         }})
-        //     .setPin(".header")
-        //     .addTo(controller)
-        // });
-    </script>
+  <!-- <script>
+let myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("body").style.display = "flex";
+}
+</script> -->
+
+
+<body onload="myFunction()" style="margin:0;" id="body">
+     <div class="first" id="first">
+    <h1>INTRODUCTION TO MACHINE LEARNING: K-MEANS CLUSTERING</h1>
+    </div>
+
+
 
     <div class="title intuition">
         <div class="images">
@@ -223,7 +228,7 @@
 
                 <div id="text">
                 <h2>K-means Clustering: 3D Visualization</h2>
-                    We adopted PCA analysis to reduce Iris's four attributes (sepal length, sepal width, petal length and petal width) into three and visualize the dynamic clustering process 
+                    We adopted PCA analysis to reduce Iris's four attributes (sepal length, sepal width, petal length and petal width) into three and visualize the dynamic clustering process.
                 </div>
 
     </div>
