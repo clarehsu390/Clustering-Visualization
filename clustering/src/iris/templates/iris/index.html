@@ -37,12 +37,18 @@
     </script>
 
     <div class="title intuition">
+    <div class="images">
+        <div class="single">
+        <img src="../../static/fat_person.png" alt="">
+        <img src="../../static/short_person.png">
+        </div>
 
-        <img src="../../static/taller1.png" alt="">
+        <img id="people" src="../../static/people_pic.png" alt="">
+        </div>
         <div id="text">
             <h2>Some Intuition</h2>
-            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall, while the other is short. 
-            The taller group clearly weighs more than the shorter group. The features of these two groups of people are "height" and "weight." 
+            Before we begin, let's draw a basic example. Imagine two groups of people, differing in appearance. One is tall and skinny, while the other is short and chubby. 
+            The features of these two groups of people are "height" and "weight." 
             <br>
             <br>
             If we were to graph each person's height and weight on a scatter plot, with the x-axis as "weight", and the y-axis as "height." The two groups are clearly separate, distinctly showing which group each person belongs to.  
@@ -87,10 +93,12 @@
         	</div>
         </div>
 
+
         <div class="bar">
           <script src="../../static/dataset.js"></script>
+
         </div>
-        </div>
+
 
     </div>
 
@@ -110,25 +118,11 @@
             </svg>
         </p>
     </div>
-
-    <div class="title clustering">
-        <div id="text">
-                <h2>K-means Clustering</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-
-
-    </div>
                 
     <div class="title 2d">
         <div id="kmeans"></div>
         <script type="text/javascript"></script> 
-           
-        <div id="text">
-            <h2>2D Visualization</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    </div>
+        
         <div id="text">
             <h2>2D Visualization</h2>
             The algorithm works iteratively to group data points together. Centroids can either be randomly generated or randomly selected from the data set. In our example, centroids are randomly generated. 
@@ -218,8 +212,9 @@
                 
                 <script src="../../static/kmeans3D.js"></script>
                 <script type="text/javascript">
-                    var pca_list = {{ pca_list|safe }} 
-                    kMeans3D("#the_scene", 600, 400, 150, 3, 15)
+                    
+                
+                    
                 </script> 
 
     </div>
@@ -263,11 +258,26 @@
                         if (e.scrollDirection == "FORWARD" && count === 0){
                         kMeans("#kmeans", 400, 400, 150, 3, 15);
                         count += 1;
-                        console.log(count);
 
                         }
                 })
                 .addTo(ctrl);
+
+                var pca_list = {{ pca_list|safe }} 
+
+                var count2 = 0;
+
+                let threed_ctrl = new ScrollMagic.Controller();
+
+                let threeD = new ScrollMagic.Scene({
+                    triggerElement: "#3D",
+                    duration: 200
+                }).on('start', function(e) {
+                    console.log("Hello");
+                        kMeans3D("#the_scene", 600, 400, 150, 3, 15);
+                      
+                })
+                .addTo(threed_ctrl);
     </script>
 </body>
 
