@@ -115,8 +115,7 @@ button {
 }
 
 #pca {
-    /* position: relative; */
-     /* float: right;  */
+    margin: auto;
      width: 50%; 
 }
 
@@ -126,8 +125,7 @@ button {
     flex-direction: column;
 }
 
-#people {
-    height: 200px;
+ 
 }
 
 

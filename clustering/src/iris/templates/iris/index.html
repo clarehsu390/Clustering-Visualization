@@ -274,7 +274,7 @@
                 let threeD = new ScrollMagic.Scene({
                     triggerElement: "#3D",
                     duration: 200
-                }).on('start', function(e) {
+                }).on('start update', function(e) {
                     console.log("Hello");
                         kMeans3D("#the_scene", 600, 400, 150, 3, 15);
                       
