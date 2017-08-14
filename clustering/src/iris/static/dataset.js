@@ -2,10 +2,10 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var svg = d3.select("#bar").append("svg") // data join
+var svg = d3.select(".bar").append("svg") // data join
 	.attr("width", width + margin.left + margin.right)
 	.attr("height", height + margin.top + margin.bottom)
-  .append("g")
+  	.append("g")
   	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var xScale = d3.scaleLinear()
@@ -69,25 +69,24 @@ function start (err, data) {
 			case 0:
 				headerText += "Sepal Length";
 				xScale.domain(d3.extent(nested[i].sepal_length_array));
-				binsData = d3.histogram().thresholds(8)(nested[i].sepal_length_array);
+				binsData = d3.histogram().thresholds(xScale.ticks(10))(nested[i].sepal_length_array);
 				break;
 			case 1:
 				headerText += "Sepal Width";
 				xScale.domain(d3.extent(nested[i].sepal_width_array));
-				binsData = d3.histogram().thresholds(8)(nested[i].sepal_width_array);
+				binsData = d3.histogram().thresholds(xScale.ticks(10))(nested[i].sepal_width_array);
 				break;
 			case 2:
 				headerText += "Petal Length";
 				xScale.domain(d3.extent(nested[i].petal_length_array));
-				binsData = d3.histogram().thresholds(8)(nested[i].petal_length_array);
+				binsData = d3.histogram().thresholds(xScale.ticks(10))(nested[i].petal_length_array);
 				break;
 			case 3:
 				headerText += "Petal Width";
 				xScale.domain(d3.extent(nested[i].petal_width_array));
-				binsData = d3.histogram().thresholds(8)(nested[i].petal_width_array);
+				binsData = d3.histogram().thresholds(xScale.ticks(10))(nested[i].petal_width_array);
 				break;
 		}
-
 
 		yScale.domain([0, d3.max(binsData, function(d) { return d.length; })])
 
@@ -96,7 +95,10 @@ function start (err, data) {
 		
 		var barEnter = barContent.enter().append("g")
 		    .attr("class", "bar")
-		    .attr("transform", function(d) { return "translate(" + (xScale(d.x1 - d.x0)-2) + "," + yScale(d.length)	 + ")"; });
+		    .attr("transform", function(d) { 
+		    	console.log("d", d);
+		    	console.log("d.length", d.length);
+		    	return "translate(" + (xScale(d.x1 - d.x0)) + "," + yScale(d.length)	 + ")"; });
 		
 		barEnter.append("rect")
 	    	.attr("x", 1)
@@ -108,12 +110,12 @@ function start (err, data) {
 		    .attr("y", 6)
 		    .attr("x", 50)
 		    .attr("text-anchor", "middle")
-		    .text(function(d) { return d.y; });
+		    .text(function(d) { return d.length; });
 
 		var updateSelection = svg.selectAll(".bar")
 			.transition()
 			.duration(500)
-		    .attr("transform", function(d) { return "translate(" + (xScale(d.x0)+2) + "," + yScale(d.length)	 + ")"; });
+		    .attr("transform", function(d) { return "translate(" + xScale(d.x0) + "," + yScale(d.length)	 + ")"; });
 
 		updateSelection.select("rect")
 	    	.attr("x", 1)
@@ -127,7 +129,7 @@ function start (err, data) {
 	    	.remove();	
 		
 		xAxis = d3.axisBottom()
-		    .scale(xScale)
+		    // .scale(xScale)
 		    .tickSize(-height)
 		    .tickPadding(10);
 
