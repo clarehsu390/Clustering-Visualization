@@ -109,8 +109,7 @@ button {
 }
 
 #pca {
-    /* position: relative; */
-     /* float: right;  */
+    margin: auto;
      width: 50%; 
 }
 
@@ -163,8 +162,7 @@ canvas:focus, input:focus{
     flex-direction: column;
 }
 
-#people {
-    height: 200px;
+ 
 }
 
 
