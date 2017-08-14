@@ -155,7 +155,7 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
             .attr("class", function(d) { return d.type; })
             .attr("r", 5);
             
-        circle.transition().delay(10).duration(100)
+        circle.transition().delay(10).duration(400)
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; })
             .style("fill", function(d) { return d.fill; });
