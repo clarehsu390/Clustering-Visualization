@@ -1,8 +1,14 @@
-function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
+function kMeans3D() {
+    console.log("button");
     // the current iteration
     var iter = 1,
         centroids = [],
-        points = [];
+        points = [],
+        w = 600,
+        h = 400,
+        numPoints = 150,
+        numClusters = 3,
+        maxIter = 15;
         
     var margin = {top: 30, right: 20, bottom: 20, left: 30},
         width = w - margin.left - margin.right,
@@ -149,15 +155,16 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
                 else {
                     return 0.5; 
                 }});
-                
+
             circle.selectAll("shape appearance material")
             .attr("diffuseColor", function(d){return d.fill;});
             
-            circle.transition().delay(100).duration(1000)
+            circle.transition().delay(50).duration(500)
             .attr('translation', function(d){ 
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});
 
-        
+            console.log("circle", circle);
+            console.log("update");
                 }
 
     /**
@@ -201,7 +208,7 @@ function kMeans3D(elt, w, h, numPoints, numClusters, maxIter) {
                 clearInterval(interval);
                 // setText("Done");
             }
-        }, 5 * 1000);
+        }, 10 * 1000);
     }
 
     // Call the main function

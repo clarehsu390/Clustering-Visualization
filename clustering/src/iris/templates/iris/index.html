@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
 
     <script src="../../static/kmeans.js"></script>
+    <script type="text/javascript" src="../../static/kmeans3D.js"></script>
     
 </head>
 
@@ -144,12 +145,15 @@
             Principal Component Analysis (PCA) is a technique used to  transform a high-dimensional dataset into a lower-dimensional subspace prior to running a machine learning algorithm on the data. It makes data easy to describe and visualize.
         </div>
         <div id="pca">
+             <button onclick="solve()">Set PCA Mode </button>
+             <button onclick="move()"> Make the Graph Move </button>
              <script src="../../static/pca3d.js"></script>   
         </div>
     </div>
 
     <div class="title 3D" id="3D">
         <div id="3D visualizations">
+        <div id="test" ></div>
         <x3d id="chartholder"></x3d>
             <script>
             var makeSolid = function(selection, color) {
@@ -214,6 +218,15 @@
                 </script> 
                 
                 <script type="text/javascript" src="../../static/kmeans3D.js"></script>
+                
+                <script type="text/javascript">
+                    var pca_list = {{ pca_list|safe }} 
+                    kMeans3D()
+                </script> 
+
+                    <!-- function handler(){
+                        kMeans3D("#the_scene", 600, 400, 150, 3, 15)} -->
+
                 </div>
 
                 <div id="text">
@@ -247,9 +260,9 @@
                 }
 
                 let ctrl = new ScrollMagic.Controller({
-                    globalSceneOptions: {
-                        triggerHook: 'onEnter'
-                    }
+                    // globalSceneOptions: {
+                    //     triggerHook: 'onEnter'
+                    // }
                 });
                     var count = 0;
                      var iris_list = {{ iris_list|safe }}
@@ -258,7 +271,7 @@
                     triggerHook: 'onEnter',
                     duration: 200
                 }).on('start', function(e){
-                    
+                        console.log("count",count);
                         if (e.scrollDirection == "FORWARD" && count === 0){
                         kMeans("#kmeans", 400, 400, 150, 3, 15);
                         count += 1;
@@ -267,21 +280,36 @@
                 })
                 .addTo(ctrl);
 
-                var pca_list = {{ pca_list|safe }} 
 
-                var count2 = 0;
+                // let threed_ctrl = new ScrollMagic.Controller({
+                // });
 
-                let threed_ctrl = new ScrollMagic.Controller();
+                // var count2 = 0;
+                // var pca_list = {{ pca_list|safe }} 
 
-                let threeD = new ScrollMagic.Scene({
-                    triggerElement: "#chartholder",
-                    duration: 200
-                }).on('start', function(e) {
-                    console.log("Hello");
-                        kMeans3D("#the_scene", 600, 400, 150, 3, 15);
-                      
-                })
-                .addTo(threed_ctrl);
+                // let threeD = new ScrollMagic.Scene({
+                //     triggerElement: "#test",
+                //     triggerHook: 'onCenter',
+                //     duration: 200
+                // }).on('start', function(e) {
+                //     console.log("count2", count2);
+                //     if (e.scrollDirection == "FORWARD" && count2 === 0){
+                //     console.log("Hello");
+                //     kMeans3D("#the_scene", 600, 400, 150, 3, 15);
+                //     count2 += 1;
+                //     }  
+                // })
+                // .addTo(threed_ctrl);
+
+                // let pca_ctrl = new ScrollMagic.Controller({});
+
+                // var count3 = 0;
+                // let PCA = new ScrollMagic.Scene({
+                //     triggerElement: "#pca",
+                //     triggerHook: 'onCenter',
+                //     duration: 200
+                // }); 
+
     </script>
 </body>
 
