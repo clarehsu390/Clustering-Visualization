@@ -1,5 +1,4 @@
 function kMeans3D() {
-    console.log("button");
     // the current iteration
     var iter = 1,
         centroids = [],
@@ -162,10 +161,7 @@ function kMeans3D() {
             circle.transition().delay(50).duration(500)
             .attr('translation', function(d){ 
                     return x(d.x) + ' ' + y(d.y) + ' ' + z(d.z)});
-
-            console.log("circle", circle);
-            console.log("update");
-                }
+            }
 
     /**
      * Executes one iteration of the algorithm:
