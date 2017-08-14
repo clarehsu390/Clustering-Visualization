@@ -52,7 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 500px;
+    width: 700px;
 }
 
 .title > #text {
@@ -99,19 +99,13 @@ img {
 	  fill: #9FEDD7;
 	  shape-rendering: crispEdges;
 }
-=======
-.pca_button {
-    /* margin-left: 30px;
-    padding: 10px; */
-    /* float: left;   */
-    /* margin: 10px; */
-    display: block;    
-    /* position: absolute;  */
-}
 
 button {
-    height: 20px;
-    width: 45px;
+    height: 30px;
+    background-color: #0497a5;
+    /* width: 45px; */
+    font-size: 17px;
+    color: white;
 }
 
 #pca {
@@ -119,6 +113,49 @@ button {
      width: 50%; 
 }
 
+.bar text {
+    /* fill: #fff; */
+    fill: #026670;
+    font-size: 12px;
+  }
+  
+.axis path, .axis line {
+    fill: none;
+    stroke: 3px #f0f;
+    shape-rendering: crispEdges;
+}
+
+.tick {
+      stroke: 1px #fff solid;
+}
+
+.leftButtons {
+    width: 120px;
+    height: 70px;
+    display: inline-block;
+}
+
+.selectorButtons {
+
+    background-color: #9FEDD7;
+    border-radius: 3px;
+    border:1px solid black;
+    font-size:17px;
+    text-decoration:none;
+    /* text-shadow:0px 1px 0px #2f6627; */
+    padding: 3px
+
+}
+
+canvas:focus, input:focus{
+    outline: none;
+}
+
+.rightButtons {
+    position: relative;
+    left: 130px;
+    top: -80px;
+}
 
 .images {
     display: flex;
@@ -129,5 +166,10 @@ button {
 }
 
 
-
+div#pca {
+    display: flex;
+    flex-direction: column; 
+    /* justify-content: center; */
+    align-items: center;
+}
 
