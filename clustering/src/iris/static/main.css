@@ -148,6 +148,10 @@ button {
 
 }
 
+canvas:focus, input:focus{
+    outline: none;
+}
+
 .rightButtons {
     position: relative;
     left: 130px;
