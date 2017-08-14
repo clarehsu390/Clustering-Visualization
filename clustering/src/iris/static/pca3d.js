@@ -147,6 +147,7 @@ function solve() {
     var data = [x_adjust, y_adjust];
 
     finalData = numeric.transpose(numeric.dot(featureVectorRow, data));
+    setTimeout(move(), 1500);
 }
 
 function move() {
@@ -239,10 +240,10 @@ var t = d3.timer(function() {
 
     if (++numSamples > 10) {
         t.stop();
-        setTimeout(function(){
-            solve();
-            setTimeout(move(), 1500)}
-        , 1500)
+        // setTimeout(function(){
+        //     solve();
+        //     setTimeout(move(), 1500)}
+        // , 1500)
 
       }
 
