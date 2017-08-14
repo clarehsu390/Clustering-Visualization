@@ -144,6 +144,7 @@
             Principal Component Analysis (PCA) is a technique used to  transform a high-dimensional dataset into a lower-dimensional subspace prior to running a machine learning algorithm on the data. It makes data easy to describe and visualize.
         </div>
         <div id="pca">
+            <button onclick="solve()">PCA</button>
              <script src="../../static/pca3d.js"></script>   
         </div>
     </div>
@@ -275,7 +276,7 @@
                     triggerElement: "#3D",
                     duration: 200
                 }).on('start', function(e) {
-                    console.log("Hello");
+                    // console.log("Hello");
                         kMeans3D("#the_scene", 600, 400, 150, 3, 15);
                       
                 })
