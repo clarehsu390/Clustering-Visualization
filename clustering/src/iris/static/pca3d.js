@@ -75,9 +75,6 @@ function covariance(x_adjust, y_adjust, n) {
     return total / (n - 1);
 }
 
-
-
-
 function solve() {
     var n = xdata.length;
     var x_mean = xdata.reduce(function(memo, num) {
@@ -170,7 +167,6 @@ function move() {
     components.exit().remove();
     components.enter().append('line');
 
-
     // plot the new lower dimensional data
     var circle = svg_pca.selectAll("circle");
     //.data(finalData, function(d, i){ return d;});
@@ -186,7 +182,6 @@ function move() {
             return Y(0.5 + finalData[i][0]);
         });
 
-
     components
         .transition().duration(5000)
         .attr('x1', function(d) {
@@ -201,8 +196,6 @@ function move() {
         .attr('y2', function(d) {
             return Y(d[1][1]);
         });
-
-
 
 }
 

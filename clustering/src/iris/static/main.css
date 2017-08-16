@@ -186,10 +186,6 @@ canvas:focus, input:focus{
     flex-direction: column;
 }
 
- 
-
-
-
 div#pca {
     display: flex;
     flex-direction: column; 
@@ -206,9 +202,14 @@ div#pca {
     opacity: 0.8;
 }
 
+
 #people {
     height: 400px;
 }
 
 
+
+button:focus, input:focus{
+    outline: none;
+}
 
