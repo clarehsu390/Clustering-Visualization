@@ -26,6 +26,9 @@ h1 {
     
 }
 
+
+
+
 .first {
     display: flex;
     justify-content: center;
@@ -113,6 +116,7 @@ button.pca {
     border: solid 1px #0497a5;
     padding: 5px;
     display: inline;
+    margin: auto;
 }
 
 button.pca:hover {
@@ -198,6 +202,14 @@ div#pca {
     opacity: 0.8;
 }
 
+
+#people {
+    height: 400px;
+}
+
+
+
 button:focus, input:focus{
     outline: none;
 }
+
