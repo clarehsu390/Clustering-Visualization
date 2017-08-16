@@ -1,3 +1,5 @@
+//author Brian Thorne
+//github: https://gist.github.com/hardbyte/40cd6622cffbe98055d3#file-index-html
 var margin = {
         top: 20,
         right: 20,
@@ -169,14 +171,12 @@ function move() {
 
     // plot the new lower dimensional data
     var circle = svg_pca.selectAll("circle");
-    //.data(finalData, function(d, i){ return d;});
 
     circle
         .transition().duration(5000)
         .attr('cx', function(d, i) {
             return X(i / n);
         })
-        //.attr('cx', function(d, i){return X( 0.5 + finalData[i][1] );})
         .transition().duration(5000)
         .attr('cy', function(d, i) {
             return Y(0.5 + finalData[i][0]);
@@ -239,6 +239,4 @@ var t = d3.timer(function() {
         // , 1500)
 
       }
-
-    // return ++numSamples > 5;
 });
