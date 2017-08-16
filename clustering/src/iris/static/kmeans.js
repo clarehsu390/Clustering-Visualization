@@ -33,9 +33,6 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
         return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
     }
 
-    /** 
-     * Generates a specified number of random points of the specified type.
-     */
     function initializePoints(num, type) {
         
         let result = [];
@@ -153,12 +150,6 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
         svg.selectAll(".label").text(text);
     }
     
-    /**
-     * Executes one iteration of the algorithm:
-     * - Fill the points with the color of the closest centroid (this makes it 
-     *   part of its cluster)
-     * - Move the centroids to the center of their cluster.
-     */
     function iterate() {
         
         // Update label
