@@ -26,27 +26,11 @@ function kMeans(elt, w, h, numPoints, numClusters, maxIter) {
             "," + (height + margin.top + margin.bottom) + ")")
         .text("");
 
-    /**
-     * Computes the euclidian distance between two points.
-     */
+   
     function getEuclidianDistance(a, b) {
         var dx = b.x - a.x,
             dy = b.y - a.y;
         return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-    }
-    
-    /**
-     * Returns a point with the specified type and fill color and with random 
-     * x,y-coordinates.
-     */
-    function getRandomPoint(type, fill) {
-        
-        return { 
-            x: Math.round(Math.random() * width), 
-            y: Math.round(Math.random() * height),
-            type: type,
-            fill: fill 
-        };
     }
 
     /** 
